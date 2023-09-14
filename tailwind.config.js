@@ -1,18 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false,
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Graphik', 'Inter', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+        sans: ["Bai Jamjuree, Graphik", "Inter", "sans-serif,"],
+        serif: ["Merriweather", "serif"],
       },
     },
   },
-  plugins: [
-    require('daisyui'),
-  ],
+  plugins: [require("daisyui")],
   daisyui: {
     styled: true,
     themes: false,
@@ -20,7 +18,7 @@ module.exports = {
     utils: false,
     logs: false,
     rtl: false,
-    prefix: '',
-    darkTheme: 'light',
+    prefix: "",
+    darkTheme: "light",
   },
-}
+};
