@@ -3,24 +3,23 @@ import { companyVocancy } from "../../utils/constants/contants";
 import Arrowleft from "../../assets/icons/arrowLeft.svg";
 import { Link } from "react-router-dom";
 
-type CompanyCardsType = {
+type AllCompanyCardsType = {
   openByIdCompanyCardHandler: () => void;
 };
 
-interface CompanyVocancyType {
+interface AllCompanyVocancyType {
   id: number;
   companyName?: string;
   aboutVocancy: string;
   date: string;
 }
 
-export const CompanyCards = ({
+export const AllCompanyCards = ({
   openByIdCompanyCardHandler,
-}: CompanyCardsType) => {
-  const cardsToDisplay = companyVocancy.slice(0, 4);
+}: AllCompanyCardsType) => {
   return (
-    <div className="my-44 px-14 flex justify-between items-center flex-wrap gap-8 relative">
-      {cardsToDisplay.map((item: CompanyVocancyType) => (
+    <div className="my-44 px-14 flex flex-wrap items-center gap-8 relative m-auto w-full">
+      {companyVocancy.map((item: AllCompanyVocancyType) => (
         <div
           className="card w-96 bg-base-100 shadow-xl"
           key={item.id}
@@ -30,17 +29,13 @@ export const CompanyCards = ({
             <h2 className="card-title text-2xl">{item.companyName}</h2>
             <p className="text-xl text-gray-500">{item.aboutVocancy}</p>
             <span>{item.date}</span>
+
+            <button className="right-7 bg-gray-500 hover:bg-gray-400 rounded-full py-2 px-4 mt-5 text-xl text-white">
+              Откликнуться
+            </button>
           </div>
         </div>
       ))}
-      <Link
-
-        to="all_componies"
-
-        className="absolute right-7 bg-gray-200 rounded-full p-3"
-      >
-        <img src={Arrowleft} alt="arrow" className=" rounded-full " />
-      </Link>
     </div>
   );
 };
