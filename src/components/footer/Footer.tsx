@@ -1,5 +1,6 @@
 import React from "react";
 import InstagramIcon from "../../assets/icons/instagram.svg";
+import TelegramIcons from "../../assets/icons/telegram.svg";
 
 export const Footer = () => {
   return (
@@ -26,6 +27,10 @@ export const Footer = () => {
           <div className="flex items-center gap-3 pt-4">
             <img src={InstagramIcon} alt="instagram" />
             <span className=" text-xl text-gray-500">biz.kg</span>
+          </div>
+          <div className="flex items-center gap-3 pt-4">
+            <img src={TelegramIcons} alt="instagram" />
+            <span className=" text-xl text-gray-500">@biz.kg</span>
           </div>
         </div>
       </div>
