@@ -5,7 +5,7 @@ import Message from "../../assets/images/message.png";
 
 export const Header = () => {
   return (
-    <div className="flex justify-between p-10 bg-slate-300">
+    <div className="flex justify-between p-10 mb-20">
       <div>
         <Link to="" className="">
           <div className="w-28 flex justify-between items-center">
