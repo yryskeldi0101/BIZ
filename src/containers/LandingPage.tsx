@@ -5,7 +5,7 @@ import { CompanyCards } from "../components/companyCards/CompanyCards";
 function LandingPage() {
   const [openCompanyCard, setOpenCompanyCard] = useState(false);
 
-  const openCompanyCardHandler = () => {
+  const openByIdCompanyCardHandler = () => {
     setOpenCompanyCard(true);
   };
   const openAllCompaniesCard = () => {
@@ -18,10 +18,7 @@ function LandingPage() {
   return (
     <div className=" bg-gradient-to-r from-white-50 to-fuchsia-50">
       <MainSlider openSignUpBlockHandler={openSignUpBlockHandler} />
-      <CompanyCards
-        openCompanyCardHandler={openCompanyCardHandler}
-        openAllCompaniesCard={openAllCompaniesCard}
-      />
+      <CompanyCards openByIdCompanyCardHandler={openByIdCompanyCardHandler} />
     </div>
   );
 }
