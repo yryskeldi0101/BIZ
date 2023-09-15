@@ -22,10 +22,6 @@ function LandingPage() {
 
   return (
     <div className=" bg-gradient-to-r from-white-50 to-fuchsia-50">
-      <Header
-        openSignUpBlockHandler={openSignUpBlockHandler}
-        openMessageHandler={openMessageHandler}
-      />
       <MainSlider openSignUpBlockHandler={openSignUpBlockHandler} />
       <CompanyCards
         openCompanyCardHandler={openCompanyCardHandler}
