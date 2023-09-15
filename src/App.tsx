@@ -1,10 +1,10 @@
-import React from 'react';
-import { Header } from './components/header/Header';
+import React from "react";
+import LandingPage from "./containers/LandingPage";
 
 function App() {
   return (
     <div>
-      <Header />
+      <LandingPage />
     </div>
   );
 }
