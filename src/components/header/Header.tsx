@@ -4,8 +4,8 @@ import Logo from "../../assets/icons/logo.svg";
 import Message from "../../assets/images/message.png";
 
 type HeaderTypes = {
-  openSignUpBlockHandler: () => void;
-  openMessageHandler: () => void;
+  openSignUpBlockHandler?: () => void;
+  openMessageHandler?: () => void;
 };
 
 export const Header = ({ openSignUpBlockHandler, openMessageHandler }: HeaderTypes) => {
