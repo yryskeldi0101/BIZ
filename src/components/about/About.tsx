@@ -1,15 +1,12 @@
-import React from "react";
 import aboutImage from "../../assets/images/about/realHandTross.jpg";
 import image from "../../assets/images/about/lestnitsa2.jpg";
 import hopeImage from "../../assets/images/about/hands-of-couple-extended-to-each-other-against-the-sunlit-room.jpg";
-import { Header } from "../header/Header";
 import SliderUi from "../UI/SliderUi";
 
 const About = () => {
   return (
     <>
-      <Header />
-      <div className="pl-9 pr-20 pb-20 flex justify-between flex-wrap bg-[#EEEDEB]">
+      <div className="pl-9 pr-20 pt-10 pb-20 flex justify-between flex-wrap bg-[#EEEDEB]">
         <div className="">
           <h1 className="font-serif font-medium text-6xl pb-12">Кто Мы?</h1>
           <p className="font-serif text-2xl w-[31.25rem] pb-5 font-normal">
@@ -36,10 +33,12 @@ const About = () => {
           />
         </div>
       </div>
-      <h1 className="text-center pt-28 text-6xl text-black font-medium font-serif">
+      <h1
+        className={`text-center pt-28 text-6xl text-black font-medium font-serif`}
+      >
         Наша миссия
       </h1>
-      <div className="flex justify-around pt-20">
+      <div className={`flex justify-around pt-20`}>
         <div className="w-[25rem] p-12 bg-[#EEEDEB] flex flex-col items-center rounded-lg">
           <h2 className="text-black font-serif text-center text-2xl w-64 pb-8">
             Вдохновлять и изменять мир
@@ -128,7 +127,7 @@ const About = () => {
       </div>
       <div className="flex items-center pl-9 pb-20  ">
         <div className="pr-32">
-          <img src={hopeImage} alt="hope" className="h-[40.625rem]"/>
+          <img src={hopeImage} alt="hope" className="h-[40.625rem]" />
         </div>
         <div className="w-[30rem]">
           <h1 className="text-5xl w-[31rem] font-serif">
