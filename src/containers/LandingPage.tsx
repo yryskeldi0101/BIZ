@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Header } from "../components/header/Header";
 import { MainSlider } from "../components/mainSlider/MainSlider";
 import { CompanyCards } from "../components/companyCards/CompanyCards";
+import { Footer } from "../components/footer/Footer";
 
 function LandingPage() {
   const [openCompanyCard, setOpenCompanyCard] = useState(false);
@@ -30,6 +31,7 @@ function LandingPage() {
         openCompanyCardHandler={openCompanyCardHandler}
         openAllCompaniesCard={openAllCompaniesCard}
       />
+      <Footer />
     </div>
   );
 }

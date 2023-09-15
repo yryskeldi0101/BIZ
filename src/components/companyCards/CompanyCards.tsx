@@ -27,8 +27,8 @@ export const CompanyCards = ({
       {cardsToDisplay.map((item: CompanyVocancyType) => (
         <div className="card w-96 bg-base-100 shadow-xl" key={item.id}>
           <div className="card-body items-center text-center">
-            <h2 className="card-title">{item.companyName}</h2>
-            <p>{item.aboutVocancy}</p>
+            <h2 className="card-title text-2xl">{item.companyName}</h2>
+            <p className="text-xl text-gray-500">{item.aboutVocancy}</p>
             <span>{item.date}</span>
           </div>
         </div>
@@ -38,7 +38,7 @@ export const CompanyCards = ({
         className="absolute right-7 bg-gray-200 rounded-full p-3"
         onClick={openAllCompaniesCard}
       >
-        <img src={Arrowleft} alt="" className=" rounded-full " />
+        <img src={Arrowleft} alt="arrow" className=" rounded-full " />
       </button>
     </div>
   );
