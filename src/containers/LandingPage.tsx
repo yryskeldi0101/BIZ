@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Header } from "../components/header/Header";
 import { MainSlider } from "../components/mainSlider/MainSlider";
 import { CompanyCards } from "../components/companyCards/CompanyCards";
-import { Footer } from "../components/footer/Footer";
 
 function LandingPage() {
   const [openCompanyCard, setOpenCompanyCard] = useState(false);
@@ -10,10 +8,10 @@ function LandingPage() {
   const openByIdCompanyCardHandler = () => {
     setOpenCompanyCard(true);
   };
-  const openSignUpBlockHandler = () => {
+  const openAllCompaniesCard = () => {
     setOpenCompanyCard(true);
   };
-  const openMessageHandler = () => {
+  const openSignUpBlockHandler = () => {
     setOpenCompanyCard(true);
   };
 
@@ -21,7 +19,6 @@ function LandingPage() {
     <div className=" bg-gradient-to-r from-white-50 to-fuchsia-50">
       <MainSlider openSignUpBlockHandler={openSignUpBlockHandler} />
       <CompanyCards openByIdCompanyCardHandler={openByIdCompanyCardHandler} />
-      <Footer />
     </div>
   );
 }
