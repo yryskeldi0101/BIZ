@@ -1,10 +1,12 @@
 import React from "react";
 import LandingPage from "./containers/LandingPage";
+import About from "./components/about/About";
 
 function App() {
   return (
     <div>
-      <LandingPage />
+      <About />
+      {/* <LandingPage /> */}
     </div>
   );
 }
