@@ -8,7 +8,10 @@ type HeaderTypes = {
   openMessageHandler?: () => void;
 };
 
-export const Header = ({ openSignUpBlockHandler, openMessageHandler }: HeaderTypes) => {
+export const Header = ({
+  openSignUpBlockHandler,
+  openMessageHandler,
+}: HeaderTypes) => {
   return (
     <div className="flex justify-between p-10 mb-20">
       <div>
@@ -25,8 +28,8 @@ export const Header = ({ openSignUpBlockHandler, openMessageHandler }: HeaderTyp
       </div>
       <div className="flex justify-between items-center w-4/12 text-[22px] text-gray-600 ">
         {" "}
-        <Link to="">Главная</Link>
-        <Link to="">О нас</Link>
+        <Link to="/">Главная</Link>
+        <Link to="about_us">О нас</Link>
         <Link to="">Контакты</Link>
         <Link to="" className="w-8 h-8">
           <img src={Message} alt="" />

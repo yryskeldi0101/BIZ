@@ -34,7 +34,7 @@ export const CompanyCards = ({
         </div>
       ))}
       <Link
-        to="all_companies"
+        to="all_componies"
         className="absolute right-7 bg-gray-200 rounded-full p-3"
       >
         <img src={Arrowleft} alt="arrow" className=" rounded-full " />
