@@ -1,7 +1,11 @@
 import React from "react";
-import MainImage from "../../assets/images/pngegg.png";
+import MainImage from "../../assets/images/mainImage.png";
 
-export const MainSlider = () => {
+type MainSliderTypes = {
+  openSignUpBlockHandler: () => void;
+};
+
+export const MainSlider = ({ openSignUpBlockHandler }: MainSliderTypes) => {
   const divStyle = {
     backgroundImage: `url(${MainImage})`,
     marginLeft: "40px",
