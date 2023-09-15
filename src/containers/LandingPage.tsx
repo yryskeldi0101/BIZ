@@ -7,10 +7,7 @@ import { Footer } from "../components/footer/Footer";
 function LandingPage() {
   const [openCompanyCard, setOpenCompanyCard] = useState(false);
 
-  const openCompanyCardHandler = () => {
-    setOpenCompanyCard(true);
-  };
-  const openAllCompaniesCard = () => {
+  const openByIdCompanyCardHandler = () => {
     setOpenCompanyCard(true);
   };
   const openSignUpBlockHandler = () => {
@@ -23,10 +20,7 @@ function LandingPage() {
   return (
     <div className=" bg-gradient-to-r from-white-50 to-fuchsia-50">
       <MainSlider openSignUpBlockHandler={openSignUpBlockHandler} />
-      <CompanyCards
-        openCompanyCardHandler={openCompanyCardHandler}
-        openAllCompaniesCard={openAllCompaniesCard}
-      />
+      <CompanyCards openByIdCompanyCardHandler={openByIdCompanyCardHandler} />
       <Footer />
     </div>
   );
