@@ -12,7 +12,7 @@ export const Header = ({ openSignUpBlockHandler, openMessageHandler }: HeaderTyp
   return (
     <div className="flex justify-between p-10 mb-20">
       <div>
-        <Link to="" className="">
+        <Link to="/" className="">
           <div className="w-28 flex justify-between items-center">
             <img
               src={Logo}
