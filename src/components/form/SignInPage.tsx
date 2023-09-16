@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import clsx from "clsx";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store";
+import { loginThunk } from "../../store/auth/authThunk";
+import { toastError } from "../toast";
 
 const SignInPage = () => {
   const schema = z.object({
@@ -25,11 +29,16 @@ const SignInPage = () => {
     },
     resolver: zodResolver(schema),
   });
+  const dispatch = useDispatch<AppDispatch>()
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    const sendData = {
+      email: data.email,
+      password: data.password
+    }
+    dispatch(loginThunk(sendData)).unwrap().then(() => window.location.reload()).catch((e) => toastError("Что-то пошло не так! повторите попытку позже"))
   };
   const navigateHandler = () => {
-    navigate(-1);
+    navigate("/");
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

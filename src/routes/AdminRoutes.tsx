@@ -10,13 +10,13 @@ import Vacancies from '../containers/admin/Vacancies'
 const AdminRoutes = () => {
   return (
     <Routes>
-        <Route path='/' element={<Navigate replace to="/admin"/>} />
-        <Route path='/admin/' element={<AdminLayout/>}>
-          <Route index element={<PrivateRoute component={AdminMainPage} roles={ROLES.ADMIN}/>}/>
-        <Route path='requests' element={<PrivateRoute component={Requests} roles='ADMIN'/>}/>
-        <Route path='vacancies' element={<PrivateRoute component={Vacancies} roles='ADMIN'/>}/>
-        </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path='/' element={<Navigate replace to="/admin" />} />
+      <Route path='/admin/' element={<AdminLayout />}>
+        <Route index element={<PrivateRoute component={AdminMainPage} roles="ADMIN" />} />
+        <Route path='requests' element={<PrivateRoute component={Requests} roles='ADMIN' />} />
+        <Route path='vacancies' element={<PrivateRoute component={Vacancies} roles='ADMIN' />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
 
     </Routes>
   )

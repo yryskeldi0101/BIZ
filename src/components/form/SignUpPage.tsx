@@ -4,20 +4,26 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "react-router-dom";
 import clsx from "clsx";
+import { toastError, toastInfo } from "../toast";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store";
+import { registerRequest } from "../../api/auth/authService";
+import { registerThunk } from "../../store/auth/authThunk";
 const SignUpPage = () => {
   const schema = z.object({
     name: z.string().nonempty(),
     lastName: z.string().nonempty(),
     select: z.string().nonempty(),
     email: z.string().email(),
-    password: z.string().min(6),
-    exseptPassword: z.string().min(6),
+    password: z.string().min(8),
+    exseptPassword: z.string().min(8),
     age: z.string().nonempty(),
+    phone: z.string().min(13)
   });
   const navigate = useNavigate();
 
   const navigateHandler = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   type FormData = (typeof schema)["_output"];
@@ -35,11 +41,22 @@ const SignUpPage = () => {
       password: "",
       exseptPassword: "",
       age: "",
+      phone: ""
     },
     resolver: zodResolver(schema),
   });
+  const dispatch = useDispatch<AppDispatch>()
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    const sendData = {
+      firstName: data.name,
+      lastName: data.lastName,
+      phoneNumber: data.phone,
+      email: data.email,
+      password: data.password,
+      role: data.select,
+      age: +data.age,
+    }
+    dispatch(registerThunk(sendData)).unwrap().then(() => window.location.reload()).catch((e) => toastError("Что-то пошло не так! повторите попытку позже"))
   };
 
   return (
@@ -123,8 +140,8 @@ const SignUpPage = () => {
                           <option value="" disabled>
                             Выберите своё направление
                           </option>
-                          <option value="volunteer">Volunteer</option>
-                          <option value="manager">Manager</option>
+                          <option value="VOLUNTEER">Volunteer</option>
+                          <option value="MANAGER">Manager</option>
                         </select>
                       )}
                     />
@@ -201,7 +218,7 @@ const SignUpPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-between">
                 <div>
                   <div className=" mb-2">
                     <label
@@ -221,6 +238,28 @@ const SignUpPage = () => {
                         errors.age && "border-2 border-red-700"
                       )}
                       placeholder="Возраст"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="mb-2 ">
+                    <label
+                      className=" font-bold font-sans text-xl"
+                      htmlFor="name"
+                    >
+                      Номер телефона:
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      id="phone"
+                      {...register("phone")}
+                      className={clsx(
+                        " input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5",
+                        errors.phone && "border-2 border-red-700"
+                      )}
+                      placeholder="+996 700 321 2121"
                     />
                   </div>
                 </div>

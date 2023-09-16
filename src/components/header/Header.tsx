@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/logo.svg";
 import Message from "../../assets/images/message.png";
+import { logOutFunction } from "../../store/auth/authThunk";
 
 type HeaderTypes = {
   openSignUpBlockHandler?: () => void;
@@ -13,11 +14,12 @@ export const Header = ({
   openMessageHandler,
 }: HeaderTypes) => {
   const { pathname } = useLocation();
-  const navigate = useNavigate();
-  console.log(pathname);
-
+  const navigate = useNavigate()
   let buttonName = "";
   const navigateHandler = () => {
+    if (pathname === "/manager") {
+      logOutFunction()
+    }
     navigate("/signin");
   };
 
@@ -25,6 +27,7 @@ export const Header = ({
     buttonName = "Выйти";
   } else {
     buttonName = "Войти";
+
   }
 
   return (
@@ -42,7 +45,6 @@ export const Header = ({
         </Link>
       </div>
       <div className="flex justify-between items-center w-4/12 text-[22px] text-gray-600 ">
-        {" "}
         <Link to="/">Главная</Link>
         <Link to="about_us">О нас</Link>
         <Link to="">Контакты</Link>
