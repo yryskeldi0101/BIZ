@@ -1,11 +1,14 @@
+import React from "react";
+import LandingPage from "./containers/LandingPage";
+
 import AppRoute from "./routes/AppRoute";
-// import ManagerRoutes from "./routes/ManagerRoutes";
 
 function App() {
   return (
     <div>
+      <LandingPage />
+
       <AppRoute />
-      {/* <ManagerRoutes /> */}
     </div>
   );
 }
