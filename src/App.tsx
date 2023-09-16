@@ -1,10 +1,14 @@
 import React from "react";
-import LandingPage from "./containers/LandingPage";
+import VolunteerPage from "./containers/VolunteerPage";
+import { Header } from "./components/header/Header";
+// import LandingPage from "./containers/LandingPage";
 
 function App() {
   return (
     <div>
-      <LandingPage />
+      {/* <LandingPage /> */}
+      <Header />
+      <VolunteerPage />
     </div>
   );
 }
