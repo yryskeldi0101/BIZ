@@ -1,0 +1,17 @@
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-slide {
+  animation: 14s slide infinite linear;
+}
+
+.animate-slide:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
