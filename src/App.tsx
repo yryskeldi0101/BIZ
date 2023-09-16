@@ -1,14 +1,11 @@
-import React from "react";
-import VolunteerPage from "./containers/VolunteerPage";
-import { Header } from "./components/header/Header";
-// import LandingPage from "./containers/LandingPage";
+import AppRoute from "./routes/AppRoute";
+// import ManagerRoutes from "./routes/ManagerRoutes";
 
 function App() {
   return (
     <div>
-      {/* <LandingPage /> */}
-      <Header />
-      <VolunteerPage />
+      <AppRoute />
+      {/* <ManagerRoutes /> */}
     </div>
   );
 }
