@@ -2,26 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 import { loginThunk, registerThunk } from "./authThunk";
 import { InitialState, ROLES } from "../../utils/types/types";
 
-const data = localStorage.getItem("token");
-
 const getInitialState = (): InitialState => {
-    if (data) {
-        const parsed = JSON.parse(data);
+    const json = localStorage.getItem("token")
+    if (json) {
+        const userData = JSON.parse(json)
         return {
-            role: parsed.role,
-            token: parsed.token,
-            isAuthorized: false,
+            isAuthorized: true,
+            token: userData.token,
             isLoading: false,
-        };
-    } else {
-        return {
-            role: ROLES.GUEST,
-            token: "",
-            isAuthorized: false,
-            isLoading: false,
-        };
+            role: userData.role,
+        }
     }
-};
+    return {
+        token: '',
+        isAuthorized: false,
+        isLoading: false,
+        role: ROLES.GUEST,
+    }
+}
 const initialState: InitialState = getInitialState();
 
 export const authSlice = createSlice({

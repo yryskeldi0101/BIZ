@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/logo.svg";
 import Message from "../../assets/images/message.png";
+import { logOutFunction } from "../../store/auth/authThunk";
 
 type HeaderTypes = {
   openSignUpBlockHandler?: () => void;
@@ -13,13 +14,20 @@ export const Header = ({
   openMessageHandler,
 }: HeaderTypes) => {
   const { pathname } = useLocation();
-
+  const navigate = useNavigate()
   let buttonName = "";
+  const navigateHandler = () => {
+    if (pathname === "/manager") {
+      logOutFunction()
+    }
+    navigate("/signin");
+  };
 
   if (pathname === "/manager") {
     buttonName = "Выйти";
   } else {
     buttonName = "Войти";
+
   }
 
   return (
@@ -37,14 +45,16 @@ export const Header = ({
         </Link>
       </div>
       <div className="flex justify-between items-center w-4/12 text-[22px] text-gray-600 ">
-        {" "}
         <Link to="/">Главная</Link>
         <Link to="about_us">О нас</Link>
         <Link to="">Контакты</Link>
         <Link to="" className="w-8 h-8">
           <img src={Message} alt="" />
         </Link>
-        <button className="py-[8px] px-[18px] bg-slate-600 text-white rounded-3xl">
+        <button
+          onClick={navigateHandler}
+          className="py-[8px] px-[18px] bg-slate-600 text-white rounded-3xl"
+        >
           {buttonName}
         </button>
       </div>
