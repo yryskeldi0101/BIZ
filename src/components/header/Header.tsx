@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/logo.svg";
 import Message from "../../assets/images/message.png";
 
@@ -8,9 +8,27 @@ type HeaderTypes = {
   openMessageHandler?: () => void;
 };
 
-export const Header = ({ openSignUpBlockHandler, openMessageHandler }: HeaderTypes) => {
+export const Header = ({
+  openSignUpBlockHandler,
+  openMessageHandler,
+}: HeaderTypes) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  console.log(pathname);
+
+  let buttonName = "";
+  const navigateHandler = () => {
+    navigate("/signin");
+  };
+
+  if (pathname === "/manager") {
+    buttonName = "Выйти";
+  } else {
+    buttonName = "Войти";
+  }
+
   return (
-    <div className="flex justify-between p-10 mb-20">
+    <div className="flex justify-between p-10 mb-5">
       <div>
         <Link to="" className="">
           <div className="w-28 flex justify-between items-center">
@@ -25,14 +43,17 @@ export const Header = ({ openSignUpBlockHandler, openMessageHandler }: HeaderTyp
       </div>
       <div className="flex justify-between items-center w-4/12 text-[22px] text-gray-600 ">
         {" "}
-        <Link to="">Главная</Link>
-        <Link to="">О нас</Link>
+        <Link to="/">Главная</Link>
+        <Link to="about_us">О нас</Link>
         <Link to="">Контакты</Link>
         <Link to="" className="w-8 h-8">
           <img src={Message} alt="" />
         </Link>
-        <button className="py-[8px] px-[18px] bg-slate-600 text-white rounded-3xl">
-          Войти
+        <button
+          onClick={navigateHandler}
+          className="py-[8px] px-[18px] bg-slate-600 text-white rounded-3xl"
+        >
+          {buttonName}
         </button>
       </div>
     </div>

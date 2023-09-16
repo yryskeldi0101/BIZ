@@ -2,18 +2,23 @@ import React from "react";
 import * as z from "zod";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import clsx from "clsx";
 const SignUpPage = () => {
   const schema = z.object({
-    name: z.string(),
-    lastName: z.string(),
-    select: z.string(),
+    name: z.string().nonempty(),
+    lastName: z.string().nonempty(),
+    select: z.string().nonempty(),
     email: z.string().email(),
     password: z.string().min(6),
     exseptPassword: z.string().min(6),
-    age: z.string(),
+    age: z.string().nonempty(),
   });
+  const navigate = useNavigate();
+
+  const navigateHandler = () => {
+    navigate(-1);
+  };
 
   type FormData = (typeof schema)["_output"];
   const {
@@ -60,8 +65,12 @@ const SignUpPage = () => {
                     <input
                       type="text"
                       id="name"
+                      {...register("name")}
+                      className={clsx(
+                        " input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5",
+                        errors.name && "border-2 border-red-700"
+                      )}
                       placeholder="Имя"
-                      className=" input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5"
                     />
                   </div>
                 </div>
@@ -78,8 +87,12 @@ const SignUpPage = () => {
                     <input
                       type="text"
                       id="lastName"
+                      {...register("lastName")}
+                      className={clsx(
+                        " input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5",
+                        errors.lastName && "border-2 border-red-700"
+                      )}
                       placeholder="Фамилия"
-                      className=" input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5"
                     />
                   </div>
                 </div>
@@ -102,7 +115,10 @@ const SignUpPage = () => {
                       render={({ field }) => (
                         <select
                           {...field}
-                          className="select-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md h-[52px]  w-[400px]  mb-5"
+                          className={clsx(
+                            "select-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md h-[52px]  w-[400px]  mb-5",
+                            errors.select && "border-2 border-red-700"
+                          )}
                         >
                           <option value="" disabled>
                             Выберите своё направление
@@ -125,15 +141,15 @@ const SignUpPage = () => {
                       </label>
                     </div>
                     <div>
-                      {errors.email && (
-                        <p className=" text-red-800">{errors.email.message}</p>
-                      )}
                       <input
                         type="email"
                         id="email"
                         {...register("email")}
+                        className={clsx(
+                          " input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5",
+                          errors.email && "border-2 border-red-700"
+                        )}
                         placeholder="example@gmail.com"
-                        className=" input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5"
                       />
                     </div>
                   </div>
@@ -150,15 +166,15 @@ const SignUpPage = () => {
                     </label>
                   </div>
                   <div>
-                    {errors.password && (
-                      <p className=" text-red-800">{errors.password.message}</p>
-                    )}
                     <input
                       type="password"
                       id="password"
                       {...register("password")}
                       placeholder="Пароль"
-                      className=" input-primary focus:outline  focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800  p-3 border-2  rounded-md border-black w-[400px]  mb-5"
+                      className={clsx(
+                        " input-primary focus:outline  focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800  p-3 border-2  rounded-md border-black w-[400px]  mb-5",
+                        errors.password && "border-2 border-red-700"
+                      )}
                     />
                   </div>
                 </div>
@@ -172,17 +188,15 @@ const SignUpPage = () => {
                     </label>
                   </div>
                   <div>
-                    {errors.exseptPassword && (
-                      <p className=" text-red-800">
-                        {errors.exseptPassword.message}
-                      </p>
-                    )}
                     <input
                       type="password"
                       id="exseptPassword"
                       placeholder=" Потвердите пароль"
                       {...register("exseptPassword")}
-                      className=" input-primary focus:outline  focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800  p-3 border-2  rounded-md border-black w-[400px]  mb-5"
+                      className={clsx(
+                        " input-primary focus:outline  focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800  p-3 border-2  rounded-md border-black w-[400px]  mb-5",
+                        errors.exseptPassword && "border-2 border-red-700"
+                      )}
                     />
                   </div>
                 </div>
@@ -198,15 +212,15 @@ const SignUpPage = () => {
                     </label>
                   </div>
                   <div>
-                    {errors.age && (
-                      <p className=" text-red-800">{errors.age.message}</p>
-                    )}
                     <input
                       type="number"
                       id="age"
                       {...register("age")}
+                      className={clsx(
+                        " input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5",
+                        errors.age && "border-2 border-red-700"
+                      )}
                       placeholder="Возраст"
-                      className=" input-primary focus:outline focus:border-blue-800 focus:shadow-sm focus:shadow-blue-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5"
                     />
                   </div>
                 </div>
@@ -220,7 +234,10 @@ const SignUpPage = () => {
             </div>
           </div>
           <div className="flex justify-around mt-[70px]">
-            <button className=" text-center font-sans  text-xl  font-bold btn-primary p-3 rounded-md  w-[320px]">
+            <button
+              onClick={navigateHandler}
+              className=" text-center font-sans  text-xl  font-bold btn-primary p-3 rounded-md  w-[320px]"
+            >
               Назад
             </button>
             <button
