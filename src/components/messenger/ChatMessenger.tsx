@@ -13,7 +13,7 @@ export interface Chat {
 }
 
 const ChatMessages: React.FC<{ chatId: number | null }> = ({ chatId }) => {
-  const [message, setMessage] = useState(""); // State для хранения введенного сообщения
+  const [message, setMessage] = useState("");
 
   const [chatData, setChatData] = useState([
     {
