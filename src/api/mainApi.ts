@@ -1,5 +1,6 @@
 import axios from "axios";
 import apiConfig from "../config.json"
+import { logOutFunction } from "../store/auth/authThunk";
 
 export const mainApi = axios.create({
     baseURL: apiConfig.BASE_URL,
@@ -20,8 +21,16 @@ mainApi.interceptors.request.use((config) => {
 })
 
 mainApi.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        return Promise.reject(error)
+    function handleResponse(response: any) {
+      return response;
+    },
+    function handleErrorResponse(error: any) {
+      if (error) {
+        if (error.status === 401) {
+          logOutFunction()
+          throw new Error('Error');
+        }
+      }
+      return Promise.reject(error);
     }
-)
+  );

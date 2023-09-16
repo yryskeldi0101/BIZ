@@ -13,7 +13,6 @@ export const Header = ({
   openMessageHandler,
 }: HeaderTypes) => {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   let buttonName = "";
 
