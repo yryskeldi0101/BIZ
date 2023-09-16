@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/logo.svg";
 import Message from "../../assets/images/message.png";
 
@@ -13,9 +13,13 @@ export const Header = ({
   openMessageHandler,
 }: HeaderTypes) => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   console.log(pathname);
 
   let buttonName = "";
+  const navigateHandler = () => {
+    navigate("/signin");
+  };
 
   if (pathname === "/manager") {
     buttonName = "Выйти";
@@ -45,7 +49,10 @@ export const Header = ({
         <Link to="" className="w-8 h-8">
           <img src={Message} alt="" />
         </Link>
-        <button className="py-[8px] px-[18px] bg-slate-600 text-white rounded-3xl">
+        <button
+          onClick={navigateHandler}
+          className="py-[8px] px-[18px] bg-slate-600 text-white rounded-3xl"
+        >
           {buttonName}
         </button>
       </div>

@@ -27,7 +27,6 @@ export const companyVocancy = [
       " Волонтёры не получают зарплату не потому, что они бесполезны, апотому, что они бесценны",
     date: "12.08.2023",
   },
-
 ];
 
 export const dataOurAmbission = [
