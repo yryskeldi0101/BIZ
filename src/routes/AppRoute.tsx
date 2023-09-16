@@ -13,7 +13,7 @@ const roleControl = {
 }
 const AppRoute = () => {
  const role = ROLES.ADMIN
- const token = ""
+ const token = "dsdsd"
  if (!token) {
   return <GuestRoutes/>
  }
