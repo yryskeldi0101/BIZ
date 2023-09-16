@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { MainSlider } from "../components/mainSlider/MainSlider";
 import { CompanyCards } from "../components/companyCards/CompanyCards";
+import { AddVocancy } from "../components/addVocancy/AddVocancy";
 
-function LandingPage() {
+function ManagerPage() {
   const [openCompanyCard, setOpenCompanyCard] = useState(false);
 
   const openByIdCompanyCardHandler = () => {
@@ -16,11 +17,11 @@ function LandingPage() {
   };
 
   return (
-    <div className=" bg-gradient-to-r from-white-50 to-fuchsia-50">
-      <MainSlider openSignUpBlockHandler={openSignUpBlockHandler} />
+    <div className=" bg-gradient-to-r from-white-50 to-fuchsia-50 ">
+      <AddVocancy />
       <CompanyCards openByIdCompanyCardHandler={openByIdCompanyCardHandler} />
     </div>
   );
 }
 
-export default LandingPage;
+export default ManagerPage;
