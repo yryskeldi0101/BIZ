@@ -1,6 +1,6 @@
 import React from "react";
 import * as z from "zod";
-import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "react-router-dom";
 import clsx from "clsx";
