@@ -23,18 +23,17 @@ export const Footer = () => {
         </div>
         <div className="flex flex-col">
           <h2 className="text-3xl">Контакты</h2>
-          <span className=" text-xl text-gray-500 pt-4">+(996) 777999211</span>
-          <div className="flex items-center gap-3 pt-4">
+          <span className=" text-xl text-gray-500 pt-4 cursor-pointer">+(996) 777999211</span>
+          <div className="flex items-center gap-3 pt-4 cursor-pointer">
             <img src={InstagramIcon} alt="instagram" />
             <span className=" text-xl text-gray-500">biz.kg</span>
           </div>
-          <div className="flex items-center gap-3 pt-4">
+          <div className="flex items-center gap-3 pt-4 cursor-pointer">
             <img src={TelegramIcons} alt="instagram" />
-            <span className=" text-xl text-gray-500">@biz.kg</span>
+            <span className=" text-xl text-gray-500 ">@biz.kg</span>
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

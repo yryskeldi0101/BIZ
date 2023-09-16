@@ -1,16 +1,20 @@
-import React, { ComponentType } from 'react'
-import { Navigate } from 'react-router-dom'
+import React, { ComponentType } from "react";
+import { Navigate } from "react-router-dom";
 
 interface PrivateRouteProps {
-  component: ComponentType
-  roles: string
+  component: ComponentType;
+  roles: string;
 }
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ component: Component, roles, ...rest }) => {
-  const role = 'ADMIN'
+const PrivateRoute: React.FC<PrivateRouteProps> = ({
+  component: Component,
+  roles,
+  ...rest
+}) => {
+  const role = "VOLUNTEER";
   if (!role || (roles && !roles.includes(role))) {
-    return <Navigate to="/" replace={true} />
+    return <Navigate to="/" replace={true} />;
   }
-  return <Component {...rest} />
-}
+  return <Component {...rest} />;
+};
 
-export default PrivateRoute
+export default PrivateRoute;
