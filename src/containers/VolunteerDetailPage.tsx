@@ -1,7 +1,8 @@
 import { Box, Modal } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as ArowLeftIcon } from "../assets/icons/arrowLeft.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getVolunteerByIDRequest } from "../api/volunteer/volunteerService";
 
 const style = {
   position: "absolute" as "absolute",
@@ -15,16 +16,53 @@ const style = {
   p: 5,
 };
 
+type CompanyInfo = {
+  companyName: string;
+  description: string;
+  email: string;
+  location: string;
+  phoneNumber: string;
+  id: number;
+};
+
 const VolunteerDetailPage = () => {
   window.scrollTo({ top: 0 });
   const navigate = useNavigate();
-
   const [open, setOpen] = React.useState(false);
+  const { id } = useParams();
+  const [companyInfoData, setCompanyInfoData] = useState<CompanyInfo | null>(
+    null
+  );
+
+  useEffect(() => {
+    const getByIdData = async () => {
+      try {
+        const { data } = await getVolunteerByIDRequest(Number(id));
+        setCompanyInfoData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getByIdData();
+  }, [id]);
+
+  useEffect(() => {
+    setCompanyInfoData(companyInfoData);
+  }, [companyInfoData]);
+
   const handleOpen = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
+
+  if (!companyInfoData) {
+    return (
+      <div className="text-center pb-20 ">
+        <span className="loading loading-spinner text-neutral loading-lg"></span>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -32,29 +70,33 @@ const VolunteerDetailPage = () => {
         <ArowLeftIcon className="-rotate-180" />
       </button>
       <div className="px-9  pb-20">
-        <div className=" bg-white shadow-inner drop-shadow-md  py-9 pl-8">
-          <h1 className="text-3xl text-black font-serif font-medium ">
-            ManchoDevs
+        <div
+          key={companyInfoData.id}
+          className=" bg-white shadow-inner drop-shadow-md  py-9 pl-8"
+        >
+          <h1 className="text-3xl text-black font-medium ">
+            {companyInfoData.companyName}
           </h1>
-          <p className="text-base font-medium text-gray-700 font-mono">
+          <p className="text-base font-medium text-gray-700">
             12.08.2023
           </p>
           <div className="">
-            <p className="font-sans text-lg font-semibold pt-2 text-blue-600">
+            <p className=" text-lg font-semibold pt-2 text-blue-600">
               Данные компании:
             </p>
-            <p className="font-serif text-xl pt-1 font-medium">
-              Кыргызстан, Бишкек
+            <p className="text-xl pt-1 font-medium">
+              {companyInfoData.location}
             </p>
-            <p className="font-mono text-lg font-medium">hello@gmail.com</p>
+            <p className=" text-lg font-medium">
+              {companyInfoData.email}
+            </p>
           </div>
-          <p className="text-lg font-sans font-normal text-black pt-3 pb-5">
-            Волонтёры не получают зарплату не потому, что они бесполезны,
-            апотому, что они бесценны
+          <p className="text-lg font-normal text-black pt-3 pb-5">
+            {companyInfoData.description}
           </p>
           <button
             onClick={(e) => handleOpen(e)}
-            className="font-serif bg-green-600 hover:bg-green-500 w-80   py-2.5 px-5 text-xl text-white"
+            className=" bg-green-600 hover:bg-green-500 w-80   py-2.5 px-5 text-base text-white"
           >
             Откликнуться
           </button>
