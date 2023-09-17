@@ -18,10 +18,6 @@ export const getVolunteerByIDRequest = (id: number) => {
 }
 
 
-export const putRezumeRequest = (id: number, data: MessageType) => {
-    return mainApi.put(`/vacancy/respond`, {
-        params: {
-            vacancyId: id,
-        }
-    })
+export const putRezumeRequest = (id: number) => {
+    return mainApi.put(`/vacancy/respond?vacancyId=${id}`)
 }

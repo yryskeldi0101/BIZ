@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as ArowLeftIcon } from "../assets/icons/arrowLeft.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { getVolunteerByIDRequest } from "../api/volunteer/volunteerService";
+import { toastError } from "../components/toast";
 
 const style = {
   position: "absolute" as "absolute",
@@ -39,8 +40,8 @@ const VolunteerDetailPage = () => {
       try {
         const { data } = await getVolunteerByIDRequest(Number(id));
         setCompanyInfoData(data);
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        toastError(error.response?.data.message);
       }
     };
     getByIdData();
@@ -77,9 +78,7 @@ const VolunteerDetailPage = () => {
           <h1 className="text-3xl text-black font-medium ">
             {companyInfoData.companyName}
           </h1>
-          <p className="text-base font-medium text-gray-700">
-            12.08.2023
-          </p>
+          <p className="text-base font-medium text-gray-700">12.08.2023</p>
           <div className="">
             <p className=" text-lg font-semibold pt-2 text-blue-600">
               Данные компании:
@@ -87,9 +86,7 @@ const VolunteerDetailPage = () => {
             <p className="text-xl pt-1 font-medium">
               {companyInfoData.location}
             </p>
-            <p className=" text-lg font-medium">
-              {companyInfoData.email}
-            </p>
+            <p className=" text-lg font-medium">{companyInfoData.email}</p>
           </div>
           <p className="text-lg font-normal text-black pt-3 pb-5">
             {companyInfoData.description}

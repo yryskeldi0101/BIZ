@@ -29,19 +29,29 @@ export const Header = ({
   const navigate = useNavigate();
   let buttonName = "";
   const navigateHandler = () => {
-    if (pathname === "/manager") {
-      logOutFunction();
+    switch (pathname) {
+      case "/manager":
+        logOutFunction();
+        break;
+      case "/volunteer":
+        logOutFunction();
+        break;
+      default:
+        navigate("/signin");
+        break;
     }
-    navigate("/signin");
   };
-
-  if (pathname === "/manager") {
-    buttonName = "Выйти";
-  } else {
-    buttonName = "Войти";
+  switch (pathname) {
+    case "/manager":
+      buttonName = "Выйти";
+      break;
+    case "/volunteer":
+      buttonName = "Выйти";
+      break;
+    default:
+      buttonName = "Войти";
+      break;
   }
-
-  const onfo = (val: string) => toastInfo(val);
   const stateOpenHandler = (data: { message: number; chat: boolean }) =>
     setMessengerState({
       ...messengerState,
@@ -67,7 +77,7 @@ export const Header = ({
           <div className="flex gap-7 text-black">
             <Link to="/">Главная</Link>
             <Link to="about_us">О нас</Link>
-            <Link to="">Контакты</Link>
+            <a href="#contacts">Контакты</a>
           </div>
           <div className="dropdown">
             <button

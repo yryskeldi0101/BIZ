@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MessageIcon from "../../assets/icons/free-message-2367724-1976874.webp";
+import { getChatIdRequest } from "../../api/chat/chatService";
 
 interface Message {
-  text: string;
+  message: string;
   sender: string;
   setActiveChat: React.Dispatch<React.SetStateAction<number | null>>;
 }
@@ -10,7 +11,7 @@ interface Message {
 export interface Chat {
   id: number;
   messages: Message[];
-  name: string;
+  fullName: string;
 }
 
 const ChatMessages: React.FC<{
@@ -19,30 +20,26 @@ const ChatMessages: React.FC<{
 }> = ({ chatId, setActiveChat }) => {
   const [message, setMessage] = useState("");
 
-  const [chatData, setChatData] = useState([
-    {
-      id: 1,
-      messages: [
-        { text: "Hello!", sender: "other" },
-        { text: "How are you doing?", sender: "user" },
-        { text: "What's new?", sender: "user" },
-      ],
-    },
-    {
-      id: 2,
-      messages: [{ text: "I'm good, thanks!", sender: "other" }],
-    },
-    {
-      id: 3,
-      messages: [
-        { text: "Hello!", sender: "other" },
-        { text: "How are you doing?", sender: "user" },
-        { text: "What's new?", sender: "user" },
-      ],
-    },
-  ]);
+  const [chatData, setChatData] = useState<Chat[]>([]);
+  console.log(chatData);
 
   const selectedChat = chatData.find((chat) => chat.id === chatId.message);
+
+  useEffect(() => {
+    const getByIdChat = async () => {
+      try {
+        const { data } = await getChatIdRequest(chatId.message);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getByIdChat();
+  }, [chatId]);
+
+  useEffect(() => {
+    setChatData(chatData);
+  }, [chatData]);
 
   const handleSendMessage = () => {
     if (selectedChat) {
@@ -72,8 +69,10 @@ const ChatMessages: React.FC<{
                   <p className="text-base font-medium">Н</p>
                 </div>
                 <div>
-                  <p className="text-xl font-semibold  text-slate-600">Ника</p>
-                  <p className="text-gray-500">12.12.12</p>
+                  <p className="text-xl font-semibold  text-slate-600">
+                    {chatData.fullName}
+                  </p>
+                  {/* <p className="text-gray-500">12.12.12</p> */}
                 </div>
               </>
             ) : null}
@@ -93,7 +92,9 @@ const ChatMessages: React.FC<{
                   key={index}
                   className={`p-2 rounded-md shadow-md ${messageClass} w-96 `}
                 >
-                  {message.text}
+                  {chatData?.messages.map((item: Chat) => (
+                    <p>{item.message}</p>
+                  ))}
                 </div>
               );
             })}

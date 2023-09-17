@@ -4,7 +4,10 @@ import TelegramIcons from "../../assets/icons/telegram.svg";
 
 export const Footer = () => {
   return (
-    <div className="bg-gray-100 p-20 flex justify-around items-start w-full">
+    <div
+      id="contacts"
+      className="bg-gray-100 p-20 flex justify-around items-start w-full"
+    >
       <div>
         <h2 className="text-3xl text-gray-600 w-2/5">
           Наша <span className="text-orange-400"> миссия</span>{" "}
@@ -23,7 +26,10 @@ export const Footer = () => {
         </div>
         <div className="flex flex-col">
           <h2 className="text-xl">Контакты</h2>
-          <span className=" text-base text-gray-500  cursor-pointer">+(996) 777999211</span>
+          <span className=" text-base text-gray-500  cursor-pointer">
+            +(996) 777999211
+          </span>
+
           <div className="flex items-center gap-3 pt-4 cursor-pointer">
             <img src={InstagramIcon} alt="instagram" />
             <span className=" text-base text-gray-500">biz.kg</span>

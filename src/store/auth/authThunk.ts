@@ -23,9 +23,7 @@ export const loginThunk = createAsyncThunk("auth/login", async (loginData: Login
 export const registerThunk = createAsyncThunk("auth/register", async (registerData: RegisterType, { rejectWithValue }) => {
     try {
         const result = await registerRequest(registerData);
-        console.log(result.data);
-
-        localStorage.setItem("token", result.data)
+        localStorage.setItem("token", JSON.stringify(result.data))
         return result.data;
     } catch (e) {
         if (isAxiosError(e)) {

@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
 import volunteerHelp from "../assets/images/volunteer.png";
 import { useNavigate } from "react-router";
 import {
   getAllVolunteerRequest,
   putRezumeRequest,
 } from "../api/volunteer/volunteerService";
-import { toastError } from "../components/toast";
+import { toastError, toastSuccess } from "../components/toast";
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 500,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  borderRadius: 4,
-  p: 5,
-};
+// const style = {
+//   position: "absolute" as "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 500,
+//   bgcolor: "background.paper",
+//   boxShadow: 24,
+//   borderRadius: 4,
+//   p: 5,
+// };
 interface AllCompanyVocancyType {
   id: number;
   companyName?: string;
@@ -33,15 +31,14 @@ export interface MessageType {
 }
 
 export const VolunteerPage: React.FC = () => {
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const [vacancyData, setVacancyData] = useState<AllCompanyVocancyType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [text, setText] = useState<string>("");
+  // const [text, setText] = useState<string>("");
   const trueOrFalse = true;
-  const [selectedVacancyId, setSelectedVacancyId] = useState<number | null>(
-    null
-  );
-  console.log(selectedVacancyId, "vv");
+  // const [selectedVacancyId, setSelectedVacancyId] = useState<number | null>(
+  //   null
+  // );
 
   useEffect(() => {
     const getData = async () => {
@@ -63,33 +60,35 @@ export const VolunteerPage: React.FC = () => {
     setVacancyData(vacancyData);
   }, [vacancyData]);
 
-  const textChangeHandler = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setText(event?.target.value);
-  };
+  // const textChangeHandler = (event: {
+  //   target: { value: React.SetStateAction<string> };
+  // }) => {
+  //   setText(event?.target.value);
+  // };
 
-  const handleOpen = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    vacancyId: number
-  ) => {
-    e.stopPropagation();
-    setSelectedVacancyId(vacancyId);
-    setOpen(true);
-  };
-  const handleClose = () => setOpen(false);
+  // const handleOpen = (
+  //   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  //   vacancyId: number
+  // ) => {
+  //   e.stopPropagation();
+  //   setSelectedVacancyId(vacancyId);
+  //   setOpen(true);
+  // };
+  // const handleClose = () => setOpen(false);
 
   const navigate = useNavigate();
 
-  const confrimRezumeHandler = async () => {
-    if (selectedVacancyId !== null) {
-      const data: MessageType = {
-        message: text,
-        id: selectedVacancyId,
-      };
-      try {
-        await putRezumeRequest(selectedVacancyId, data);
-      } catch (error) {}
+  const confrimRezumeHandler = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number
+  ) => {
+    e.stopPropagation();
+
+    try {
+      const { data } = await putRezumeRequest(id);
+      toastSuccess(data.message);
+    } catch (error: any) {
+      toastError(error.response?.data.message);
     }
   };
 
@@ -99,7 +98,7 @@ export const VolunteerPage: React.FC = () => {
         <img src={volunteerHelp} alt="volunteerHelp" />
       </div>
       <div>
-        <h2 className="px-14 text-4xl tracking-wide text-[#383838] pt-8">
+        <h2 className="px-14 text-4xl tracking-wide text-green-500 pt-8">
           Вам подойдут эти волонтерства
         </h2>
         <div className="pb-24 mt-14 px-14  flex flex-wrap  gap-8  m-auto w-full">
@@ -119,7 +118,7 @@ export const VolunteerPage: React.FC = () => {
                     </p>
                     <div>
                       <button
-                        onClick={(e) => handleOpen(e, item.id)}
+                        onClick={(e) => confrimRezumeHandler(e, item.id)}
                         className=" bg-green-600 hover:bg-green-500  rounded-full py-2.5 px-5 text-base text-white"
                       >
                         Откликнуться
@@ -136,7 +135,7 @@ export const VolunteerPage: React.FC = () => {
           )}
         </div>
       </div>
-      <Modal
+      {/* <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -162,7 +161,7 @@ export const VolunteerPage: React.FC = () => {
             Отправить
           </button>
         </Box>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

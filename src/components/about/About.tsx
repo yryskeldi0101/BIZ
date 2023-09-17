@@ -8,7 +8,9 @@ const About = () => {
     <>
       <div className="pl-9 pr-20 pt-10 pb-20 flex justify-between">
         <div>
-          <h1 className="font-medium text-6xl pb-12">Кто Мы?</h1>
+          <h1 className="font-medium text-5xl pb-10">
+            Кто <span className="text-red-400">Мы?</span>
+          </h1>
           <p className="text-2xl w-[31.25rem] pb-5 font-normal">
             Мы - волонтерская организация, создающая сообщество для
             положительных перемен. Наша цель - помочь каждому человеку,
@@ -113,7 +115,9 @@ const About = () => {
           <img src={hopeImage} alt="hope" className="h-[34rem]" />
         </div>
         <div className="w-[30rem]">
-          <h1 className="text-5xl w-[31rem] text-blue-700">Присоединяйтесь к нам</h1>
+          <h1 className="text-5xl w-[31rem] text-blue-700">
+            Присоединяйтесь к нам
+          </h1>
           <p className="text-2xl font-normal pt-14">
             Присоединяйтесь к нам в волонтерстве и станьте частью нашей
             удивительной команды! Вместе мы можем сделать мир ярче, лучше и
