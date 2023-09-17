@@ -1,44 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toastError } from "../toast";
+import { accepVolunterInMAnager, getAllVolunteersInManager } from "../../api/manager/mangerService";
 import { companyVocancy } from "../../utils/constants/contants";
-import Arrowleft from "../../assets/icons/arrowLeft.svg";
-import { Link } from "react-router-dom";
 
 type CompanyCardsType = {
   openByIdCompanyCardHandler: () => void;
 };
 
 interface CompanyVocancyType {
-  id: number;
-  companyName?: string;
-  aboutVocancy: string;
-  date: string;
+  vacancyId: string;
+  vacancyName: string;
+  volunteerRequestResponses: {
+    fullName: string;
+    age: number;
+    email: string;
+    date: string;
+    phoneNumber: string
+    id: string
+  }[]
 }
 
 export const CompanyCards = ({
   openByIdCompanyCardHandler,
 }: CompanyCardsType) => {
-  const cardsToDisplay = companyVocancy.slice(0, 4);
+  const [volunteers, setVolunteers] = useState<CompanyVocancyType[]>()
+
+  const getAllVolunteers = async () => {
+    try {
+      const result = await getAllVolunteersInManager()
+      setVolunteers(result.data)
+      return result.data
+    } catch (error) {
+      return toastError("Не удалсь загрузить данные")
+    }
+  }
+  console.log(volunteers)
+  const accepVoulterHandler = async (data: string) => {
+    try {
+      accepVolunterInMAnager(data)
+    } catch (error) {
+      return toastError("Error")
+    }
+  }
+  useEffect(() => {
+    getAllVolunteers()
+  }, [])
   return (
-    <div className="my-44 px-14 flex justify-between items-center flex-wrap gap-8 relative">
-      {cardsToDisplay.map((item: CompanyVocancyType) => (
-        <div
-          className="card w-96 bg-base-100 shadow-xl relative"
-          key={item.id}
-          onClick={openByIdCompanyCardHandler}
-        >
-          <div className="card-body items-center text-center">
-            <h2 className="card-title text-2xl">{item.companyName}</h2>
-            <p className="text-xl text-gray-500">{item.aboutVocancy}</p>
-            <span>{item.date}</span>
+    <div>
+      <div className="my-44 px-14 flex justify-center items-center w-[1500px] flex-wrap gap-5">
+        {volunteers?.map((item, index) => (
+          <div
+            className="  rounded-2xl w-[394px] bg-base-100 flex flex-row shadow-xl p-10"
+            key={item.vacancyId}
+            onClick={openByIdCompanyCardHandler}
+          >
+            <h1 className="text-black text-3xl font-bold">{item?.vacancyName}</h1>
+            <div>
+              {item.volunteerRequestResponses.map((val) => {
+                return <div>
+                  <div className="card-body items-center text-center">
+                    <h2 className="card-title text-2xl">{val.fullName}</h2>
+                    <p className="text-xl text-gray-500">{val.phoneNumber}</p>
+                    <p className="text-xl text-gray-500">{val.email}</p>
+                    <p className="text-xl text-gray-500">{val.age}</p>
+
+                  </div>
+                </div>
+              })}
+              <div className="flex item-center justify-center">
+                <button className="btn mb-2 w-[200px]" onClick={() => accepVoulterHandler(item.volunteerRequestResponses[index].id)}>Принять</button>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
-      <Link
-        to="all_componies"
-        className="absolute right-7 bg-gray-200 rounded-full p-3"
-      >
-        <img src={Arrowleft} alt="arrow" className=" rounded-full " />
-      </Link>
-    </div>
+        ))
+        }
+      </div >
+    </div >
   );
 };

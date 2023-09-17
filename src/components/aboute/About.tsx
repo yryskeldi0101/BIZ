@@ -43,7 +43,7 @@ const About = () => {
       </h1>
       <div className={`flex justify-around pt-20`}>
         {dataOurAmbission.map((item) => (
-          <div className="w-[25rem] p-12 bg-gray-100 flex flex-col items-center rounded-lg">
+          <div key={item.id} className="w-[25rem] p-12 bg-gray-100 flex flex-col items-center rounded-lg">
             <h2 className="text-gray-900 font-serif text-center text-2xl w-64 pb-8">
               {item.title}
             </h2>

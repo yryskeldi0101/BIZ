@@ -29,9 +29,9 @@ export const Modal = ({
         <div className="modal-box">
           {children}
           <div className="modal-action gap-4">
-            <label htmlFor="my_modal_6" className="btn" onClick={onClickButton}>
+            <button  className="btn" onClick={onClickButton}>
               {buttonItem}
-            </label>
+            </button>
             <label htmlFor="my_modal_6" className="btn">
               Close!
             </label>
