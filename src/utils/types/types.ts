@@ -25,3 +25,9 @@ export type InitialState = {
     isAuthorized: boolean;
     isLoading: boolean;
 }
+export type CompanyInfo = {
+    companyName: string;
+    phoneNumber: string;
+    requirement: string;
+    location: string;
+};
