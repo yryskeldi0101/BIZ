@@ -7,17 +7,6 @@ import {
 } from "../api/volunteer/volunteerService";
 import { toastError, toastSuccess } from "../components/toast";
 
-// const style = {
-//   position: "absolute" as "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 500,
-//   bgcolor: "background.paper",
-//   boxShadow: 24,
-//   borderRadius: 4,
-//   p: 5,
-// };
 interface AllCompanyVocancyType {
   id: number;
   companyName?: string;
@@ -31,14 +20,10 @@ export interface MessageType {
 }
 
 export const VolunteerPage: React.FC = () => {
-  // const [open, setOpen] = React.useState(false);
   const [vacancyData, setVacancyData] = useState<AllCompanyVocancyType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [text, setText] = useState<string>("");
   const trueOrFalse = true;
-  // const [selectedVacancyId, setSelectedVacancyId] = useState<number | null>(
-  //   null
-  // );
+  
 
   useEffect(() => {
     const getData = async () => {

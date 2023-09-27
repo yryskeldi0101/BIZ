@@ -2,7 +2,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/hopeHand.jpg";
 import Message from "../../assets/images/message.png";
 import { logOutFunction } from "../../store/auth/authThunk";
-import Messenger from "../messenger/Messenger";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { toastInfo } from "../toast";
@@ -98,10 +97,6 @@ export const Header = ({
                 tabIndex={0}
                 className="dropdown-content z-[1] menu  shadow bg-base-100 rounded-box top-16 -right-28"
               >
-                <Messenger
-                  handleOpen={stateOpenHandler}
-                  messengerState={messengerState}
-                />
               </ul>
             )}
           </div>
