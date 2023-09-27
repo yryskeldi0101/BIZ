@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Footer } from "../components/footer/Footer";
+// import { Footer } from "../components/footer/Footer";
 import { Header } from "../components/header/Header";
 
 const VolunteerLayout = () => {
@@ -10,7 +10,7 @@ const VolunteerLayout = () => {
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
