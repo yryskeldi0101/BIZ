@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/hopeHand.jpg";
+import { ReactComponent as CrossIcon } from "../../assets/icons/x (2).svg";
 import Message from "../../assets/images/message.png";
 import { logOutFunction } from "../../store/auth/authThunk";
 import { useSelector } from "react-redux";
@@ -59,7 +60,7 @@ export const Header = ({
     });
   return (
     <>
-      <div className="flex justify-between px-10 py-5">
+      <div className="flex justify-between sm:px-10 px-5 py-5">
         <div>
           <Link to="" className="">
             <div className="w-28 flex justify-between items-center">
@@ -72,8 +73,44 @@ export const Header = ({
             </div>
           </Link>
         </div>
-        <div className="flex justify-between items-center  text-lg text-gray-600 ">
-          <div className="flex gap-7 text-black">
+        <div className="drawer-end z-10 block sm:hidden">
+          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            <label htmlFor="my-drawer" className="drawer-button">
+              <img
+                src="https://www.svgrepo.com/show/506800/burger-menu.svg"
+                alt="burgerIcon"
+                className="w-9 h-9"
+              />
+            </label>
+          </div>
+          <div className="drawer-side">
+            <label htmlFor="my-drawer" className="drawer-overlay"></label>
+            <ul className="menu p-4 w-64 pl-5 text-xl   font-medium min-h-full pt-10 bg-base-200 text-base-content">
+              <label className="" htmlFor="my-drawer">
+                <CrossIcon />
+              </label>
+              <div className="pl-8 pt-4">
+                <li>
+                  <Link to="/">Главная</Link>
+                </li>
+                <li>
+                  <Link to="about_us">О нас</Link>
+                </li>
+                <li>
+                  <a href="#contacts">Контакты</a>
+                </li>
+                <li>
+                  <button onClick={navigateHandler} className="">
+                    {buttonName}
+                  </button>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <div className="sm:flex justify-between items-center  text-lg text-gray-600 hidden">
+          <div className="sm:flex sm:gap-7 sm:text-black ">
             <Link to="/">Главная</Link>
             <Link to="about_us">О нас</Link>
             <a href="#contacts">Контакты</a>
@@ -102,7 +139,7 @@ export const Header = ({
           </div>
           <button
             onClick={navigateHandler}
-            className="py-[8px] px-[18px] bg-slate-600  text-white rounded-3xl "
+            className="py-[8px] sm:px-[18px] px-4 bg-slate-600  text-white rounded-3xl hidden sm:block"
           >
             {buttonName}
           </button>

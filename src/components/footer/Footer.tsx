@@ -6,21 +6,21 @@ export const Footer = () => {
   return (
     <div
       id="contacts"
-      className="bg-gray-100 p-20 flex justify-around items-start w-full"
+      className="bg-gray-100 sm:p-20 p-10 flex justify-around items-start w-full flex-wrap"
     >
       <div>
-        <h2 className="text-3xl text-gray-600 w-2/5">
+        <h2 className="text-3xl text-gray-600 sm:w-2/5">
           Наша <span className="text-orange-400"> миссия</span>{" "}
         </h2>
-        <p className="w-[450px] text-base text-gray-500 pt-4">
+        <p className="sm:w-[28.125rem] text-base text-gray-500 pt-4">
           Мы стремимся создать общество, где каждый человек может найти место,
           где его примут и поддержат. Нашей миссией является объединение людей в
           сообщество заботы, где каждый может оказать помощь и получить ее в
           ответ.
         </p>
       </div>
-      <div className="flex justify-around w-3/5">
-        <div>
+      <div className="flex sm:justify-around sm:pt-0 pt-5  sm:w-3/5">
+        <div className="sm:pr-0 pr-7">
           <h2 className="text-xl mb-5">Адрес</h2>
           <span className=" text-base text-gray-500 ">Улица. Эркиндик 64B</span>
         </div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MainSlider } from "../components/mainSlider/MainSlider";
 import { CompanyCards } from "../components/companyCards/CompanyCards";
 import { AddVocancy } from "../components/addVocancy/AddVocancy";
 
@@ -17,7 +16,7 @@ function ManagerPage() {
   };
 
   return (
-    <div className=" bg-gradient-to-r from-white-50 to-fuchsia-50 ">
+    <div className="bg-gradient-to-r from-white-50 to-fuchsia-300">
       <AddVocancy />
       <CompanyCards openByIdCompanyCardHandler={openByIdCompanyCardHandler} />
     </div>

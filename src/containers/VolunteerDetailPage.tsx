@@ -47,13 +47,13 @@ const VolunteerDetailPage = () => {
 
   return (
     <>
-      <button onClick={() => navigate(-1)} className="pl-14 pt-10">
+      <button onClick={() => navigate(-1)} className="sm:pl-14 pl-8 pt-10">
         <ArowLeftIcon className="-rotate-180" />
       </button>
-      <div className="px-9  pb-20">
+      <div className="sm:px-9 px-5  pb-20">
         <div
           key={companyInfoData.id}
-          className=" bg-white shadow-inner drop-shadow-md  py-9 pl-8"
+          className="bg-white shadow-inner drop-shadow-md  py-9 pl-8"
         >
           <h1 className="text-3xl text-black font-medium ">
             {companyInfoData.companyName}
@@ -66,7 +66,7 @@ const VolunteerDetailPage = () => {
             <p className="text-xl pt-1 font-medium">
               {companyInfoData.location}
             </p>
-            <p className=" text-lg font-medium">{companyInfoData.email}</p>
+            <p className="text-lg font-medium">{companyInfoData.email}</p>
           </div>
           <p className="text-lg font-normal text-black pt-3 pb-5">
             {companyInfoData.description}
