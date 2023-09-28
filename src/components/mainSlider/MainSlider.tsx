@@ -8,29 +8,26 @@ type MainSliderTypes = {
 
 export const MainSlider = ({ openSignUpBlockHandler }: MainSliderTypes) => {
   const navigate = useNavigate();
-  const divStyle = {
-    backgroundImage: `url(${MainImage})`,
-    marginLeft: "40px",
-  };
+
   const navigateHandler = () => {
     navigate("/signin");
   };
   return (
-    <div className="flex justify-between items-center px-14 pt-7">
-      <div className="w-1/2">
-        <p className="text-5xl  leading-tight font-normal text-gray-800">
+    <div className="flex sm:justify-between sm:items-center flex-wrap sm:px-14 px-5 pt-7">
+      <div className="w-[39rem] sm:pb-0 pb-7">
+        <img src={MainImage} alt="mainImage" />
+      </div>
+      <div className="sm:w-1/2 pl-4">
+        <p className="sm:text-4xl text-2xl leading-tight font-normal text-gray-800">
           Волонтёры не получают зарплату не потому, что они бесполезны, а
           потому, что они бесценны
         </p>
         <button
-          className="py-[10px] px-16 bg-slate-600 text-white rounded-3xl mt-8 text-xl"
+          className="sm:py-[10px] py-2.5 sm:px-16 px-8 bg-slate-600 text-white rounded-3xl sm:mt-8 mt-5 sm:text-xl"
           onClick={navigateHandler}
         >
           Войти
         </button>
-      </div>
-      <div style={divStyle}>
-        <img src={MainImage} alt="" />
       </div>
     </div>
   );

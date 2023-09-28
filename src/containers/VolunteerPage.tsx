@@ -7,18 +7,7 @@ import {
 } from "../api/volunteer/volunteerService";
 import { toastError, toastSuccess } from "../components/toast";
 
-// const style = {
-//   position: "absolute" as "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 500,
-//   bgcolor: "background.paper",
-//   boxShadow: 24,
-//   borderRadius: 4,
-//   p: 5,
-// };
-interface AllCompanyVocancyType {
+export interface AllCompanyVocancyType {
   id: number;
   companyName?: string;
   aboutVacancy: string;
@@ -31,14 +20,10 @@ export interface MessageType {
 }
 
 export const VolunteerPage: React.FC = () => {
-  // const [open, setOpen] = React.useState(false);
   const [vacancyData, setVacancyData] = useState<AllCompanyVocancyType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [text, setText] = useState<string>("");
   const trueOrFalse = true;
-  // const [selectedVacancyId, setSelectedVacancyId] = useState<number | null>(
-  //   null
-  // );
+  
 
   useEffect(() => {
     const getData = async () => {
@@ -94,14 +79,14 @@ export const VolunteerPage: React.FC = () => {
 
   return (
     <>
-      <div className="m-auto px-14 pt-[9.7rem] pb-16">
+      <div className="m-auto sm:px-14 px-5 pt-16 sm:pt-[9.7rem] pb-16">
         <img src={volunteerHelp} alt="volunteerHelp" />
       </div>
       <div>
-        <h2 className="px-14 text-4xl tracking-wide text-green-500 pt-8">
+        <h2 className="sm:px-14 px-5 text-4xl tracking-wide text-green-500 sm:pt-8 pt-4">
           Вам подойдут эти волонтерства
         </h2>
-        <div className="pb-24 mt-14 px-14  flex flex-wrap  gap-8  m-auto w-full">
+        <div className="pb-24  mt-14 sm:px-14 px-5   flex flex-wrap  gap-8  sm:m-auto sm:w-full w-[25rem]">
           {!isLoading ? (
             <>
               {vacancyData.map((item: AllCompanyVocancyType) => (
