@@ -5,8 +5,8 @@ import Message from "../../assets/images/message.png";
 import { logOutFunction } from "../../store/auth/authThunk";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { toastInfo } from "../toast";
 import { useState } from "react";
+import Messenger from "../messenger/Messenger";
 
 type HeaderTypes = {
   openSignUpBlockHandler?: () => void;
@@ -134,8 +134,17 @@ export const Header = ({
                 tabIndex={0}
                 className="dropdown-content z-[1] menu  shadow bg-base-100 rounded-box top-16 -right-28"
               >
+                {/* <Messenger
+                  handleOpen={stateOpenHandler}
+                  messengerState={{
+                    message: 0,
+                    chat: false,
+                  }}
+                /> */}
+                {/* <MessengerBox />/ */}
+                <Messenger />
               </ul>
-            )}
+            )}{" "}
           </div>
           <button
             onClick={navigateHandler}

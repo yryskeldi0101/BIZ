@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toastError } from "../toast";
 import {
   accepVolunterInMAnager,
@@ -10,7 +10,7 @@ type CompanyCardsType = {
 };
 
 interface CompanyVocancyType {
-  vacancyId: string;
+  vacancyId: number;
   vacancyName: string;
   volunteerRequestResponses: {
     fullName: string;
@@ -18,7 +18,7 @@ interface CompanyVocancyType {
     email: string;
     date: string;
     phoneNumber: string;
-    id: string;
+    id: number;
   }[];
 }
 
@@ -36,10 +36,10 @@ export const CompanyCards = ({
       return toastError(error.response?.data.message);
     }
   };
-  console.log(volunteers);
-  const accepVoulterHandler = async (data: string) => {
+
+  const accepVoulterHandler = async (vacancyId: number, id: number) => {
     try {
-      accepVolunterInMAnager(data);
+      accepVolunterInMAnager(vacancyId, id);
     } catch (error: any) {
       return toastError(error.response?.data.message);
     }
@@ -49,41 +49,43 @@ export const CompanyCards = ({
   }, []);
   return (
     <div>
-      <div className="my-44 px-14 flex justify-center items-center w-[1500px] flex-wrap gap-5">
-        {volunteers?.map((item, index) => (
+      <div className="my-44 px-14 flex  items-center  flex-wrap gap-5">
+        {volunteers?.map((item) => (
           <div
-            className="  rounded-2xl w-[394px] bg-base-100 flex flex-row shadow-xl p-10"
+            className="rounded-2xl  bg-gray-300 flex w-full shadow-xl p-10"
             key={item.vacancyId}
             onClick={openByIdCompanyCardHandler}
           >
-            <h1 className="text-black text-3xl font-bold">
+            <h1 className="text-black text-2xl font-medium">
               {item?.vacancyName}
             </h1>
             <div>
               {item.volunteerRequestResponses.map((val) => {
                 return (
-                  <div>
-                    <div className="card-body items-center text-center">
-                      <h2 className="card-title text-2xl">{val.fullName}</h2>
-                      <p className="text-xl text-gray-500">{val.phoneNumber}</p>
-                      <p className="text-xl text-gray-500">{val.email}</p>
-                      <p className="text-xl text-gray-500">{val.age}</p>
+                  <>
+                    <div key={val.id}>
+                      <div className=" items-center text-center">
+                        <h2 className="text-2xl">{val.fullName}</h2>
+                        <p className="text-xl text-gray-500">
+                          {val.phoneNumber}
+                        </p>
+                        <p className="text-xl text-gray-500">{val.email}</p>
+                        <p className="text-xl text-gray-500">{val.age}</p>
+                      </div>
                     </div>
-                  </div>
+                    <div className="">
+                      <button
+                        className="py-2 px-8 bg-blue-600 hover:bg-blue-500 text-white text-xl rounded-md"
+                        onClick={() =>
+                          accepVoulterHandler(item.vacancyId, val.id)
+                        }
+                      >
+                        Принять
+                      </button>
+                    </div>
+                  </>
                 );
               })}
-              <div className="flex item-center justify-center">
-                <button
-                  className="btn mb-2 w-[200px]"
-                  onClick={() =>
-                    accepVoulterHandler(
-                      item.volunteerRequestResponses[index].id
-                    )
-                  }
-                >
-                  Принять
-                </button>
-              </div>
             </div>
           </div>
         ))}

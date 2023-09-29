@@ -8,12 +8,12 @@ function ManagerPage() {
   const openByIdCompanyCardHandler = () => {
     setOpenCompanyCard(true);
   };
-  const openAllCompaniesCard = () => {
-    setOpenCompanyCard(true);
-  };
-  const openSignUpBlockHandler = () => {
-    setOpenCompanyCard(true);
-  };
+  // const openAllCompaniesCard = () => {
+  //   setOpenCompanyCard(true);
+  // };
+  // const openSignUpBlockHandler = () => {
+  //   setOpenCompanyCard(true);
+  // };
 
   return (
     <div className="bg-gradient-to-r from-white-50 to-fuchsia-300">

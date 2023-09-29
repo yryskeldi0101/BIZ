@@ -14,7 +14,7 @@ export const MainSlider = ({ openSignUpBlockHandler }: MainSliderTypes) => {
   };
   return (
     <div className="flex sm:justify-between sm:items-center flex-wrap sm:px-14 px-5 pt-7">
-      <div className="w-[39rem] sm:pb-0 pb-7">
+      <div className="w-[38rem] sm:pb-0 pb-7">
         <img src={MainImage} alt="mainImage" />
       </div>
       <div className="sm:w-1/2 pl-4">
