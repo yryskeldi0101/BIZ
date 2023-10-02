@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Icon from "../../assets/icons/Favorites.svg";
 import ChatMessages from "./ChatMessenger";
 import { getAllChatRequest } from "../../api/chat/chatService";
 
@@ -22,70 +21,28 @@ export interface Chat {
   messages: MessageType[];
 }
 
-const chatDataD = [
-  {
-    id: 1,
-    fullName: "Peaksoft",
-    messages: [
-      {
-        id: 1,
-        message: "Hello!",
-        isManager: true,
-        senderUserId: 0,
-        recipientUserId: 0,
-      },
-      {
-        id: 2,
-        message: "How are you doing?",
-        isManager: false,
-        senderUserId: 1,
-        recipientUserId: 0,
-      },
-    ],
-  },
-  {
-    id: 3,
-    fullName: "Google",
-    messages: [
-      {
-        id: 3,
-        message: "Привет!",
-        isManager: true,
-        senderUserId: 0,
-        recipientUserId: 0,
-      },
-      {
-        id: 4,
-        message: "Чем занят?",
-        isManager: false,
-        senderUserId: 3,
-        recipientUserId: 0,
-      },
-    ],
-  },
-];
 const ChatList: React.FC<ChatListProps> = ({ activeChat, setActiveChat }) => {
-  const [chatData, setChatData] = useState(chatDataD);
+  const [chatData, setChatData] = useState<Chat[]>([]);
 
-  // useEffect(() => {
-  //   const getAllChat = async () => {
-  //     try {
-  //       const { data } = await getAllChatRequest();
-  //       setChatData(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getAllChat();
-  // }, []);
+  useEffect(() => {
+    const getAllChat = async () => {
+      try {
+        const { data } = await getAllChatRequest();
+        setChatData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllChat();
+  }, []);
 
   const handleChatClick = (chatId: number) => {
     setActiveChat(chatId);
   };
-  const chatDataFormatted = chatDataD.map((chat) => ({
+  const chatDataFormatted = chatData.map((chat) => ({
     id: chat.id,
     userId: 0,
-    managerId: 0, 
+    managerId: 0,
     fullName: chat.fullName,
     messages: chat.messages,
   }));

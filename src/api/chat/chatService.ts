@@ -1,3 +1,4 @@
+import { SendMessageType } from "../../components/messenger/ChatMessenger"
 import { mainApi } from "../mainApi"
 
 
@@ -12,4 +13,7 @@ export const getChatIdRequest = (id: number) => {
             targetChatId: id
         }
     })
+}
+export const sendMessageRequest = (data: SendMessageType) => {
+    return mainApi.post(`/chat/send_message`, data)
 }

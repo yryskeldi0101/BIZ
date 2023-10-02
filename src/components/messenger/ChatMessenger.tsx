@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getAllChatRequest } from "../../api/chat/chatService";
+import {
+  getAllChatRequest,
+  sendMessageRequest,
+} from "../../api/chat/chatService";
 import { Chat } from "./Chatlist";
 import { ReactComponent as SendIcon } from "../../assets/icons/🦆 icon _send diagonal_.svg";
 import MessageIcon from "../../assets/icons/free-message-2367724-1976874.webp";
-
-// interface MessageType {
-//   id: number;
-//   message: string;
-//   isManager: boolean;
-//   senderUserId: number;
-//   recipientUserId: number;
-// }
-// export interface Chat {
-//   id: number;
-//   userId: number;
-//   managerId: number;
-//   fullName: string;
-//   messages: MessageType[];
-// }
 
 interface ChatMessagesProps {
   chatId: number | null;
@@ -25,6 +13,12 @@ interface ChatMessagesProps {
   setChatData: (updatedData: Chat[]) => void;
 }
 
+export interface SendMessageType {
+  chatId: number;
+  volunteerId: number;
+  managerId: number;
+  message: string;
+}
 const ChatMessages: React.FC<ChatMessagesProps> = ({
   chatId,
   chatData,
@@ -32,33 +26,45 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
 }) => {
   const [message, setMessage] = useState("");
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (message.trim() === "") {
       return;
     }
 
-    const updatedChatData = [...chatData];
-    const selectedChatIndex = updatedChatData.findIndex(
-      (chat) => chat.id === chatId
-    );
+    // const updatedChatData = [...chatData];
+    // const selectedChatIndex = updatedChatData.findIndex(
+    //   (chat) => chat.id === chatId
+    // );
 
-    if (selectedChatIndex !== -1) {
-      const newMessage = {
-        id: Date.now(),
+    // if (selectedChatIndex !== -1) {
+    //   const newMessage = {
+    //     id: Date.now(),
+    //     message: message,
+    //     isManager: false,
+    //     senderUserId: 0,
+    //     recipientUserId: 0,
+    //   };
+
+    //   updatedChatData[selectedChatIndex].messages.push(newMessage);
+
+    //   setChatData(updatedChatData);
+    //   setMessage("");
+    // }
+    try {
+      const requestBody: SendMessageType = {
+        chatId,
+        volunteerId: 0,
+        managerId: 0,
         message: message,
-        isManager: false,
-        senderUserId: 0,
-        recipientUserId: 0,
       };
 
-      updatedChatData[selectedChatIndex].messages.push(newMessage);
-
-      setChatData(updatedChatData);
-      setMessage("");
+      await sendMessageRequest(requestBody);
+    } catch (error) {
+      console.log(error);
     }
   };
+
   const selectedChat = chatData.find((chat) => chat.id === chatId);
-  console.log(selectedChat, "dd");
 
   return (
     <div className="w-2/3 bg-white pt-5 px-4 rounded-lg  flex flex-col h-full overflow-y-auto">
