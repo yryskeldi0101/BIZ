@@ -6,9 +6,9 @@ import SliderUi from "../UI/SliderUi";
 const About = () => {
   return (
     <>
-      <div className="pl-9 pr-20 pt-10 pb-20 flex justify-between">
+      <div className="sm:pl-9 pl-0 pr-20 sm:w-full w-[10rem] pt-10 pb-20 flex justify-between">
         <div>
-          <h1 className="font-medium text-5xl pb-10">
+          <h1 className="font-medium text-5xl pb-10 ">
             Кто <span className="text-red-400">Мы?</span>
           </h1>
           <p className="text-2xl w-[31.25rem] pb-5 font-normal">
