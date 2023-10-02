@@ -1,7 +1,7 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/LOGO-removebg-preview 1.png";
 import { ReactComponent as CrossIcon } from "../../assets/icons/x (2).svg";
-import Message from "../../assets/icons/🦆 icon _mail_.svg";
+import Message from "../../assets/icons/icon_mail_.svg";
 import { logOutFunction } from "../../store/auth/authThunk";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
@@ -134,7 +134,7 @@ export const Header = ({
             <a href="#contacts">Контакты</a>
           </div>
           <div className="dropdown">
-            <button
+            <button title="ss"
               tabIndex={0}
               onClick={() => {
                 if (isAuthorization) {

@@ -16,7 +16,7 @@ const Messenger: React.FC = () => {
     <div className="flex">
       <ChatList activeChat={activeChat} setActiveChat={setActiveChat} />
       <div className="relative right-10">
-        <button className="absolute" onClick={closeChatHandler}>
+        <button title="ss" className="absolute" onClick={closeChatHandler}>
           <CrossIcon className="w-7 h-7" />
         </button>
       </div>
