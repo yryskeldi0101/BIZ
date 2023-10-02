@@ -8,35 +8,38 @@ export const AddVocancy = () => {
     companyName: "",
     phoneNumber: "",
     requirement: "",
-    location: ""
-  })
+    location: "",
+    countOfVolunteers: 0,
+  });
   const formChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...from, [e.target.name]: e.target.value })
-  }
+    setForm({ ...from, [e.target.name]: e.target.value });
+  };
   const submitHandler = async () => {
     const formIsEmpty = Object.values({
       companyName: from.companyName,
       phoneNumber: from.phoneNumber,
       requirement: from.requirement,
-      location: from.location
-    }).some((val) => !val)
+      location: from.location,
+      countOfVolunteers: from.countOfVolunteers,
+    }).some((val) => !val);
     if (formIsEmpty) {
-      return toastInfo("Заполните все поля!")
+      return toastInfo("Заполните все поля!");
     }
     try {
-      await createVacancyRequest(from)
+      await createVacancyRequest(from);
       setForm({
         companyName: "",
         phoneNumber: "",
         requirement: "",
-        location: ""
-      })
-      toastSuccess("Успешно сохранен")
+        location: "",
+        countOfVolunteers: 0,
+      });
+      toastSuccess("Успешно сохранен");
     } catch (error) {
-      return toastError(error as string)
+      return toastError(error as string);
     }
-    return formIsEmpty
-  }
+    return formIsEmpty;
+  };
   return (
     <Modal
       open="y_modal_6"
@@ -44,7 +47,7 @@ export const AddVocancy = () => {
       onClickButton={submitHandler}
       modalOpenLabel="Добавить вакансии"
     >
-      <form className="py-5 px-6 flex flex-col gap-4">
+      <form className=" px-6 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           <label htmlFor="companyName" className="text-base text-gray-800">
             Компания
@@ -98,6 +101,23 @@ export const AddVocancy = () => {
             onChange={formChangeHandler}
             type="text"
             placeholder="Введите адрес "
+            className="border-solid border border-gray-400 rounded-[0.5rem] p-2 outline-none placeholder:text-sm"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="countOfVolunteers"
+            className="text-base text-gray-800"
+          >
+            Количество волонтеров
+          </label>
+          <input
+            id="countOfVolunteers"
+            value={from.countOfVolunteers}
+            name="countOfVolunteers"
+            onChange={formChangeHandler}
+            type="number"
+            placeholder="Количество волонтеров"
             className="border-solid border border-gray-400 rounded-[0.5rem] p-2 outline-none placeholder:text-sm"
           />
         </div>

@@ -8,6 +8,6 @@ export const createVacancyRequest = (data: CompanyInfo) => {
 export const getAllVolunteersInManager = () => {
     return mainApi.get("/volunteer")
 }
-export const accepVolunterInMAnager = (data: string) => {
-    return mainApi.put(`/volunteer/${data}/0`)
+export const accepVolunterInMAnager = (vacancyId: number, id: number) => {
+    return mainApi.put(`/volunteer/${id}/${vacancyId}`)
 }

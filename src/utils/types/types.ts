@@ -30,4 +30,5 @@ export type CompanyInfo = {
     phoneNumber: string;
     requirement: string;
     location: string;
+    countOfVolunteers: number
 };
