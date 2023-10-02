@@ -1,7 +1,7 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Logo from "../../assets/icons/hopeHand.jpg";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import Logo from "../../assets/icons/LOGO-removebg-preview 1.png";
 import { ReactComponent as CrossIcon } from "../../assets/icons/x (2).svg";
-import Message from "../../assets/images/message.png";
+import Message from "../../assets/icons/🦆 icon _mail_.svg";
 import { logOutFunction } from "../../store/auth/authThunk";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
@@ -111,8 +111,26 @@ export const Header = ({
         </div>
         <div className="sm:flex justify-between items-center  text-lg text-gray-600 hidden">
           <div className="sm:flex sm:gap-7 sm:text-black ">
-            <Link to="/">Главная</Link>
-            <Link to="about_us">О нас</Link>
+            <NavLink
+              to="/"
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? "#A966FF" : "",
+                };
+              }}
+            >
+              Главная
+            </NavLink>
+            <NavLink
+              to="about_us"
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? "#A966FF" : "",
+                };
+              }}
+            >
+              О нас
+            </NavLink>
             <a href="#contacts">Контакты</a>
           </div>
           <div className="dropdown">
@@ -132,7 +150,7 @@ export const Header = ({
             {messengerState.chat && (
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu  shadow bg-base-100 rounded-box top-16 -right-28"
+                className="dropdown-content z-[1] menu  shadow bg-base-100 rounded-box top-16 -right-28 border border-purple-400 rounded-md"
               >
                 {/* <Messenger
                   handleOpen={stateOpenHandler}
@@ -144,11 +162,11 @@ export const Header = ({
                 {/* <MessengerBox />/ */}
                 <Messenger />
               </ul>
-            )}{" "}
+            )}
           </div>
           <button
             onClick={navigateHandler}
-            className="py-[8px] sm:px-[18px] px-4 bg-slate-600  text-white rounded-3xl hidden sm:block"
+            className="py-[8px] sm:px-[18px] px-4 bg-[#9747FF] text-sm hover:bg-purple-600  text-white rounded-md hidden sm:block"
           >
             {buttonName}
           </button>

@@ -6,7 +6,11 @@ const Messenger: React.FC = () => {
   const [activeChat, setActiveChat] = useState<number | null>(null);
 
   const closeChatHandler = () => {
-    setActiveChat(null);
+    if (activeChat !== null) {
+      setActiveChat(null);
+    } else {
+      setActiveChat(null);
+    }
   };
   return (
     <div className="flex">

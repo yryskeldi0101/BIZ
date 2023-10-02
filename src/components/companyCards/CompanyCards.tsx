@@ -52,7 +52,7 @@ export const CompanyCards = ({
       <div className="my-44 px-14 flex  items-center  flex-wrap gap-5">
         {volunteers?.map((item) => (
           <div
-            className="rounded-2xl  bg-gray-300 flex w-full shadow-xl p-10"
+            className="rounded-2xl  bg-gray-300  w-96 shadow-xl p-10"
             key={item.vacancyId}
             onClick={openByIdCompanyCardHandler}
           >
@@ -62,20 +62,38 @@ export const CompanyCards = ({
             <div>
               {item.volunteerRequestResponses.map((val) => {
                 return (
-                  <>
+                  <div>
                     <div key={val.id}>
-                      <div className=" items-center text-center">
-                        <h2 className="text-2xl">{val.fullName}</h2>
-                        <p className="text-xl text-gray-500">
-                          {val.phoneNumber}
+                      <div className=" items-start text-start text-xs text-gray-600 font-semibold">
+                        <h2 className="">
+                          Имя И Фамилия:
+                          <span className="text-base text-black font-normal pl-2">
+                            {val.fullName}
+                          </span>
+                        </h2>
+                        <p className="">
+                          Номер телефона:
+                          <span className="text-base text-black font-normal pl-2">
+                            {val.phoneNumber}
+                          </span>
                         </p>
-                        <p className="text-xl text-gray-500">{val.email}</p>
-                        <p className="text-xl text-gray-500">{val.age}</p>
+                        <p className=" ">
+                          Email:
+                          <span className="text-base text-black font-normal pl-2">
+                            {val.email}
+                          </span>
+                        </p>
+                        <p className=" ">
+                          Возраст:
+                          <span className="text-base text-black font-normal pl-2">
+                            {val.age}
+                          </span>
+                        </p>
                       </div>
                     </div>
-                    <div className="">
+                    <div className="pt-3 ">
                       <button
-                        className="py-2 px-8 bg-blue-600 hover:bg-blue-500 text-white text-xl rounded-md"
+                        className="py-2 px-7 bg-purple-500 hover:bg-purple-400 text-white text-base rounded-md"
                         onClick={() =>
                           accepVoulterHandler(item.vacancyId, val.id)
                         }
@@ -83,7 +101,7 @@ export const CompanyCards = ({
                         Принять
                       </button>
                     </div>
-                  </>
+                  </div>
                 );
               })}
             </div>
