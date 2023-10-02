@@ -19,7 +19,7 @@ export const Modal = ({
     <div className="flex flex-col items-center">
       <label
         htmlFor="my_modal_6"
-        className="btn text-center bg-gray-600 text-white hover:text-gray-600"
+        className="btn text-center bg-purple-500 text-white hover:text-purple-400"
       >
         {modalOpenLabel}
       </label>

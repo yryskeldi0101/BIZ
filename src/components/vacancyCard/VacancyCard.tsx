@@ -59,7 +59,7 @@ const VacancyCard = () => {
             <>
               {visibleVacancyData.map((item: AllCompanyVocancyType) => (
                 <div
-                  className="rounded-xl w-[24.5rem] bg-[#EEEDEB] hover:bg-[#F2F2F3]  shadow-slate-300   transform translate-x-2 translate-y-2  shadow-lg  bg-gradient-to-br relative"
+                  className="rounded-xl w-[23.9rem] bg-[#EEEDEB] hover:bg-[#F2F2F3]  shadow-slate-300   transform translate-x-2 translate-y-2  shadow-lg  bg-gradient-to-br relative"
                   key={item.id}
                 >
                   <div className="card-body  inset-0 shadow-lg ">
