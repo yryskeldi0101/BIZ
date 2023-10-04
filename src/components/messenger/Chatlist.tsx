@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Icon from "../../assets/icons/Favorites.svg";
 import ChatMessages from "./ChatMessenger";
 import { getAllChatRequest } from "../../api/chat/chatService";
 
@@ -23,6 +24,7 @@ export interface Chat {
 
 const ChatList: React.FC<ChatListProps> = ({ activeChat, setActiveChat }) => {
   const [chatData, setChatData] = useState<Chat[]>([]);
+  console.log(chatData, "kk");
 
   useEffect(() => {
     const getAllChat = async () => {
@@ -39,13 +41,7 @@ const ChatList: React.FC<ChatListProps> = ({ activeChat, setActiveChat }) => {
   const handleChatClick = (chatId: number) => {
     setActiveChat(chatId);
   };
-  const chatDataFormatted = chatData.map((chat) => ({
-    id: chat.id,
-    userId: 0,
-    managerId: 0,
-    fullName: chat.fullName,
-    messages: chat.messages,
-  }));
+
   return (
     <>
       <div className="w-72  h-[30rem] overflow-y-auto bg-white pt-4 border-r border-purple-300">
@@ -73,7 +69,7 @@ const ChatList: React.FC<ChatListProps> = ({ activeChat, setActiveChat }) => {
       </div>
       <ChatMessages
         chatId={activeChat}
-        chatData={chatDataFormatted}
+        chatData={chatData}
         setChatData={setChatData}
       />
     </>

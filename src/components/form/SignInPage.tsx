@@ -45,13 +45,18 @@ const SignInPage = () => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-screen h-screen bg-[#eeedeb] flex items-center justify-center">
-        <div className=" shadow-2xl  bg-white rounded-2xl  w-[500px] h-[450px] p-5">
-          <h1 className=" font-bold text-center text-3xl font-sans text-purple-600">Вход</h1>
-          <div className=" mt-[20px] flex justify-center">
+      <div className="w-screen h-screen bg-white flex items-center justify-center">
+        <div className="  rounded-2xl  w-[31.25rem] h-[26.25rem] p-5">
+          <h1 className=" font-medium text-center text-2xl font-sans ">
+            Войти
+          </h1>
+          <div className="mt-3 flex justify-center">
             <div>
-              <div className=" mb-2">
-                <label className=" font-bold font-sans text-xl" htmlFor="email">
+              <div className="">
+                <label
+                  className="font-sans text-sm font-medium text-gray-500"
+                  htmlFor="email"
+                >
                   Email:
                 </label>
               </div>
@@ -60,16 +65,16 @@ const SignInPage = () => {
                   type="email"
                   id="email"
                   {...register("email")}
-                  placeholder="email"
+                  placeholder="Email"
                   className={clsx(
-                    " input-primary focus:outline focus:border-purple-500 focus:shadow-sm focus:shadow-purple-800 p-3 border-2 focus:outline-none  border-black rounded-md  w-[400px]  mb-5",
-                    errors.email && "border-2 border-red-700"
+                    " outline-none focus:outline focus:border-purple-500 focus:shadow focus:shadow-purple-800 p-2 placeholder:text-sm border focus:outline-none  border-purple-300 rounded-md  w-[400px]  mb-5",
+                    errors.email && "border border-red-700"
                   )}
                 />
               </div>
-              <div className=" mb-2">
+              <div className="">
                 <label
-                  className="  font-bold font-sans text-xl"
+                  className="font-sans text-sm font-medium text-gray-500"
                   htmlFor="password"
                 >
                   Пароль:
@@ -82,12 +87,12 @@ const SignInPage = () => {
                   {...register("password")}
                   placeholder="Пароль"
                   className={clsx(
-                    " input-primary focus:outline  focus:border-purple-500 focus:shadow-sm focus:shadow-purple-800  p-3 border-2  rounded-md border-black w-[400px]  mb-5",
-                    errors.password && "border-2 border-red-700"
+                    "outline-none focus:outline  focus:border-purple-500 focus:shadow focus:shadow-purple-800 p-2 placeholder:text-sm  border  rounded-md border-purple-300 w-[400px]  mb-5",
+                    errors.password && "border border-red-700"
                   )}
                 />
               </div>
-              <p>
+              <p className="text-center text-sm">
                 У вас нету аккаунта?
                 <Link to="/signup" className=" text-[#A966FF]">
                   Зарегистрироваться
@@ -95,16 +100,16 @@ const SignInPage = () => {
               </p>
             </div>
           </div>
-          <div className="flex justify-around mt-[30px]">
+          <div className="flex justify-around mt-[1.875rem]">
             <button
               onClick={navigateHandler}
-              className=" text-center font-sans text-white  font-bold bg-[#9747FF] p-3 rounded-md  w-[120px]"
+              className=" text-center font-sans text-gray-500  font-bold bg-white border border-purple-300 p-2 rounded-md  w-[120px]"
             >
               Назад
             </button>
             <button
               type="submit"
-              className="text-center font-sans text-white  font-bold bg-[#9747FF]  p-2 rounded-md w-[120px] "
+              className="text-center font-sans text-white  font-bold bg-[#9747FF80] hover:bg-purple-500  p-2 rounded-md w-[120px] "
             >
               Войти
             </button>
