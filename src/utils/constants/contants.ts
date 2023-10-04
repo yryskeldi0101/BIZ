@@ -63,3 +63,82 @@ export const dataOurAmbission = [
       "Мы хотим, чтобы доброта была контагиозной и распространялась по всему миру. Нашей миссией является содействие распространению добрых поступков и вдохновение других на дела, которые делают мир лучше.",
   },
 ];
+
+
+export const aboutVacancyCard = [
+  {
+    id: 1,
+    name: 'Название компании',
+    date: '12.12.23',
+    reward: 'Оплачиваемость',
+    positon: 'Позиция',
+    howLongDate: '20.12.23 - 23.12.23',
+    howLongTime: '10:00-18:00',
+    description: 'Contrary to popular belief, Lorem Ipsum is not siliterature from 45 BC, making it over 2000 year...',
+    requirement: 'Finibus Bonorum et Malorum"(The Extremes of Good and Evil) by Cicero...'
+
+  },
+  {
+    id: 2,
+    name: 'Название компании',
+    date: '12.12.23',
+    reward: 'Оплачиваемость',
+    positon: 'Позиция',
+    howLongDate: '20.12.23 - 23.12.23',
+    howLongTime: '10:00-18:00',
+    description: 'Contrary to popular belief, Lorem Ipsum is not siliterature from 45 BC, making it over 2000 year...',
+    requirement: 'Finibus Bonorum et Malorum"(The Extremes of Good and Evil) by Cicero...'
+
+  },
+  {
+    id: 3,
+    name: 'Название компании',
+    date: '12.12.23',
+    reward: 'Оплачиваемость',
+    positon: 'Позиция',
+    howLongDate: '20.12.23 - 23.12.23',
+    howLongTime: '10:00-18:00',
+    description: 'Contrary to popular belief, Lorem Ipsum is not siliterature from 45 BC, making it over 2000 year...',
+    requirement: 'Finibus Bonorum et Malorum"(The Extremes of Good and Evil) by Cicero...'
+
+  },
+  {
+    id: 4,
+    name: 'Название компании',
+    date: '12.12.23',
+    reward: 'Оплачиваемость',
+    positon: 'Позиция',
+    howLongDate: '20.12.23 - 23.12.23',
+    howLongTime: '10:00-18:00',
+    description: 'Contrary to popular belief, Lorem Ipsum is not siliterature from 45 BC, making it over 2000 year...',
+    requirement: 'Finibus Bonorum et Malorum"(The Extremes of Good and Evil) by Cicero...'
+
+  },
+  {
+    id: 5,
+    name: 'Название компании',
+    date: '12.12.23',
+    reward: 'Оплачиваемость',
+    positon: 'Позиция',
+    howLongDate: '20.12.23 - 23.12.23',
+    howLongTime: '10:00-18:00',
+    description: 'Contrary to popular belief, Lorem Ipsum is not siliterature from 45 BC, making it over 2000 year...',
+    requirement: 'Finibus Bonorum et Malorum"(The Extremes of Good and Evil) by Cicero...'
+
+  },
+  {
+    id: 6,
+    name: 'Название компании',
+    date: '12.12.23',
+    reward: 'Оплачиваемость',
+    positon: 'Позиция',
+    howLongDate: '20.12.23 - 23.12.23',
+    howLongTime: '10:00-18:00',
+    description: 'Contrary to popular belief, Lorem Ipsum is not siliterature from 45 BC, making it over 2000 year...',
+    requirement: 'Finibus Bonorum et Malorum"(The Extremes of Good and Evil) by Cicero...'
+
+  },
+
+]
+
+

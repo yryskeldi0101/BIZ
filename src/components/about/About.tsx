@@ -8,33 +8,35 @@ const About = () => {
     <div>
       <div className="sm:pl-9 pl-2 pr-20 sm:pt-10 pt-2 pb-20 sm:flex flex flex-wrap justify-between">
         <div>
-          <h1 className="font-medium  sm:text-5xl text-2xl pb-10 ">
+          <h1 className="font-medium  sm:text-5xl text-2xl pb-8 px-5">
             Кто <span className="text-red-400">Мы?</span>
           </h1>
-          <p className="sm:text-2xl text-sm sm:w-[31.25rem] w-[25rem] pb-5 font-normal">
+          <p className="sm:text-2xl text-base sm:w-[31.25rem] w-[25rem] pb-5 font-normal px-5">
             Мы - волонтерская организация, создающая сообщество для
             положительных перемен. Наша цель - помочь каждому человеку,
             вдохновив его и даря надежду. Мы способствуем добрым делам,
             распространяем доброту и поддерживаем других в совместном стремлении
             к лучшему миру.
           </p>
-          <p className="sm:w-[34rem] w-[25rem] text-base font-normal">
+          <p className="sm:w-[34rem] w-[25rem] text-sm font-normal px-5">
             Мы страстно преданы идее улучшения мира через разнообразные акции и
             мероприятия, помогая разным группам нуждающихся. Присоединяйтесь к
             нам и помогайте делать мир более дружелюбным и заботливым местом.
           </p>
         </div>
-        <div className="sm:w-[40rem] w-[60rem] sm:h-[30rem] h-[10rem] pt-10">
+        <div className="sm:w-[40rem] w-[60rem] sm:h-[30rem] h-[10rem] pt-10 px-5">
           <img src={aboutImage} alt="AboutImage" />
         </div>
       </div>
-      <h1 className={`text-center pt-20 text-5xl text-orange-300 font-medium `}>
+      <h1
+        className={`text-center pt-20 text-5xl text-orange-300 font-medium px-5`}
+      >
         Наша миссия
       </h1>
       <div
-        className={`sm:flex flex flex-wrap sm:gap-0 gap-5 justify-around pt-20`}
+        className={`sm:flex flex flex-wrap sm:gap-0 gap-5 justify-around pt-20 px-5`}
       >
-        <div className="w-[25rem] p-12 bg-[#EEEDEB] flex flex-col items-center rounded-lg">
+        <div className="w-[25rem] p-12 bg-[#EEEDEB] flex flex-col items-center rounded-lg px-5">
           <h2 className="text-black text-center text-2xl w-64 pb-8">
             Вдохновлять и изменять мир
           </h2>
@@ -67,13 +69,9 @@ const About = () => {
         </div>
       </div>
       <SliderUi />
-      <div className="sm:px-9 px-2 sm:flex flex flex-wrap sm:pt-10 pt-0">
-        <div className="sm:pr-24 pr-2">
-          <img
-            src={image}
-            alt="cubeImage"
-            className="sm:w-[37.5rem] w-[25rem]"
-          />
+      <div className="sm:px-9  flex flex-wrap  sm:pt-10 pt-0 px-5">
+        <div className="sm:pr-24 pr-0 sm:w-[40rem] w-[20rem]">
+          <img src={image} alt="cubeImage" />
         </div>
         <div className="sm:pl-0 pl-2 sm:w-[38rem] w-[25rem]">
           <h1 className="sm:text-6xl text-4xl w-56 pb-10 ">
@@ -90,7 +88,7 @@ const About = () => {
           </button>
         </div>
       </div>
-      <div className="sm:flex flex flex-wrap sm:px-9 px-2  py-24">
+      <div className="sm:flex flex flex-wrap sm:px-9 px-5  py-24 ">
         <div className="w-[26.25rem]">
           <h1 className="text-6xl pb-4">Что мы делаем?</h1>
           <p className="text-xl font-normal sm:w-96 w-90">
@@ -114,15 +112,15 @@ const About = () => {
           </ul>
         </div>
       </div>
-      <div className="sm:flex flex flex-wrap items-center sm:pl-9 pl-0 pb-20  ">
-        <div className="sm:pr-32 pr-0">
+      <div className="sm:flex flex flex-wrap items-center sm:pl-9 pl-0  pb-20 px-5 ">
+        <div className="sm:pr-32 pr-0 px-5">
           <img src={hopeImage} alt="hope" className="h-[34rem]" />
         </div>
-        <div className="sm:w-[30rem] w-[25rem] sm:pl-0 pl-5">
-          <h1 className="sm:text-5xl text-4xl sm:w-[31rem] w-[25rem] sm:pt-0 pt-10 text-blue-700">
+        <div className="sm:w-[30rem] w-[25rem] sm:pl-0 px-5">
+          <h1 className="sm:text-5xl text-2xl sm:w-[31rem] w-[24rem] sm:pt-0 pt-10 text-blue-700">
             Присоединяйтесь к нам
           </h1>
-          <p className="sm:text-2xl text-sm font-normal pt-14">
+          <p className="sm:text-2xl text-base font-normal pt-7">
             Присоединяйтесь к нам в волонтерстве и станьте частью нашей
             удивительной команды! Вместе мы можем сделать мир ярче, лучше и
             добрее. Ваше участие имеет огромное значение, и ваши добрые дела
